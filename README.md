@@ -21,7 +21,7 @@
 <h3 align="center">Prenotiamo!</h3>
 
   <p align="center">
-    A website that collects food orders and then the list is forwarded to the restaurant
+    A website that collects food orders and then allow users to forward the list to the restaurant
 </div>
 
 
