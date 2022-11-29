@@ -140,6 +140,7 @@ Optional featues:
 - [ ] Display username in the top of the page
 - [ ] Back to top button
 - [ ] SMTP function using https://nodemailer.com/
+- [ ] Hosting the webserver on Azure
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
