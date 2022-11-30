@@ -124,15 +124,23 @@ DESCRIVI PAGINA INVIO ORDINE
 
 Mandatory features:
 - [ ] Design Mockup
-- [ ] Build DB & SQL instruction
+- [ ] Build DB & SQL instructions
 - [ ] Register & Login 
+- [ ] Write CSS
 - [ ] Render menù in the "Menù" page
-- [ ] SMTP function
+- [ ] Users can view their past orders
+- [ ] Users can close the order
+- [ ] Users can choose one dish of their choose from the menu
+- [ ] Assess accesibility
 
 
 Optional featues:
 
 - [X] Design Graphics
+- [ ] Display username in the top of the page
+- [ ] Back to top button
+- [ ] SMTP function using https://nodemailer.com/
+- [ ] Hosting the webserver on Azure
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -150,6 +158,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 Gerardo Cipriano - gerardo.cipriano@studio.unibo.it <br />
+
+Massimiliano Battelli - massimilian.battelli@studio.unibo.it <massimilian.battelli@studio.unibo.it <br />
+
 
 Project Link: [https://github.com/gerardocipriano/isw](https://github.com/gerardocipriano/isw)
 
