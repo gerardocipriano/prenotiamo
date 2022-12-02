@@ -159,7 +159,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Gerardo Cipriano - gerardo.cipriano@studio.unibo.it <br />
 
-Massimiliano Battelli - massimilian.battelli@studio.unibo.it massimilian.battelli@studio.unibo.it <br />
+Massimiliano Battelli - massimilian.battelli@studio.unibo.it <br />
 
 
 Project Link: [https://github.com/gerardocipriano/isw](https://github.com/gerardocipriano/isw)
