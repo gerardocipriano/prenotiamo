@@ -9,7 +9,7 @@
             <li><NuxtLink to="/storico">Storico</NuxtLink></li>
         </ul>
         </nav>
-        <div>
+        <div class="text-3xl text-center bg-red-500">
             <slot />
         </div>
     </div>
