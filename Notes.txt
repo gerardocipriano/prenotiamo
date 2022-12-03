@@ -11,3 +11,6 @@ https://tailwindcss.com/docs/utility-first
 
 tool utile per il development(eseguire npm run dev prima):
 http://localhost:3000/_tailwind/#Font%20Sizes
+
+download tailwind VSC extension:
+Tailwind CSS IntelliSense v0.9.1
