@@ -2,4 +2,8 @@
   <h1>Menu</h1>
 </template>
   
-  
+<script setup>
+definePageMeta({
+  layout: "default"
+})
+</script>
