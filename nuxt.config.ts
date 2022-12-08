@@ -2,7 +2,7 @@ import { Head } from './.nuxt/components.d';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default ({
     css:[
-        "bootstrap/dist/css/bootstrap.min.css"
+        "bootstrap/dist/css/bootstrap-local.css"
     ]
 })
 
