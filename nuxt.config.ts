@@ -1,6 +1,7 @@
 import { Head } from './.nuxt/components.d';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default ({
+    srcDir: "src",
     css:[
         "bootstrap/dist/css/bootstrap-local.css"
     ]
