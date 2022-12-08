@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/gerardocipriano/isw">
-    <img src="public/img/logo.png" alt="Logo" width="200">
+    <img src="src/public/img/logo.png" alt="Logo" width="200">
   </a>
 
 <h3 align="center">Prenotiamo!</h3>
@@ -53,7 +53,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/gerardocipriano/isw">
-    <img src="public/img/splash_screen.jpeg" alt="Logo" width="200">
+    <img src="src/public/img/splash_screen.jpeg" alt="Logo" width="200">
   </a>
   <p align="center">
 </div>
