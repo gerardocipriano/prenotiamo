@@ -3,7 +3,7 @@ import { Head } from './.nuxt/components.d';
 export default ({
     srcDir: "src",
     css:[
-        "bootstrap/dist/css/bootstrap-local.css"
+        "bootstrap/dist/css/bootstrap.css"
     ]
 })
 
