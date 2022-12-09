@@ -17,21 +17,25 @@
                             <div class="fw-semibold my-4 fs-1">Prenotiamo!</div>
                         </div>
                         <div class="col-4 text-end d-flex flex-row justify-content-end">
-                            <div class="inline-block fw-semibold mt-5 mr-2  ">Non sei registrato?</div>
-                            <a class="btn btn-dark align-self-center" href="/registra" role="button">Sing up</a>
+                            <div class="row">
+                                <div class="col-12 fw-semibold mt-5 mr-2 text-center d-none d-md-block">Non sei registrato?</div>
+                                <div class="col-12 text-center align-self-end pb-1">
+                                    <a class="btn btn-dark" href="/registra" role="button">Sing up</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </header>
-                <div class="row mt-5">
-                    <nav class="col-1">
-                        <ul class="navbar-nav text-end">
+                <div class="row mt-3">
+                    <nav class="col-md-1 mb-3">
+                        <ul class="nav flex-md-column flex-row text-end justify-content-around">
                             <li class="nav-item border-bottom border-primary"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/">Home</NuxtLink></li>
                             <li class="nav-item border-bottom border-primary"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/menu">Menu</NuxtLink></li>
                             <li class="nav-item border-bottom border-primary"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/prenota">Prenota</NuxtLink></li>
                             <li class="nav-item border-bottom border-primary"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/storico">Storico</NuxtLink></li>
                         </ul>
                     </nav>
-                    <main class="col-11">
+                    <main class="col-md-11">
                         <slot />
                     </main>
                 </div>
