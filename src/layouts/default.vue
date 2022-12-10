@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="col-12 fw-semibold mt-5 mr-2 text-center d-none d-md-block">Non sei registrato?</div>
                                 <div class="col-12 text-center align-self-end pb-1">
-                                    <a class="btn btn-dark" href="/registra" role="button">Sing up</a>
+                                    <NuxtLink class="btn btn-dark" to="/signup">Sign Up</NuxtLink>
                                 </div>
                             </div>
                         </div>
