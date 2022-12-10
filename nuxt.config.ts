@@ -5,7 +5,14 @@ export default ({
     css:[
         "bootstrap/dist/css/bootstrap.css"
     ],
-    buildModules: ['@nuxtjs/color-mode']
+    PrivateruntimeConfig: {
+        databaseName: process.env.DB_HOSTNAME,
+        serviceUserName: process.env.DB_SERVICE_USER,
+        serviceUserPassword: process.env.DB_SERVICE_USER_PASSWORD,
+        serviceAdmin: process.env.DB_SERVICE_ADMIN,
+        serviceAdminPassword: process.env.DB_SERVICE_ADMIN_PASSWORD,
+
+    }
 })
 
 // generating the html page fot 404 code

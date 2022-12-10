@@ -1,10 +1,13 @@
 import mysql from "mysql2/promise"
 
+import dotenv from 'dotenv';
+
+
 export function createConnection() {
   return mysql.createConnection({
-    host: "casper-3.mysql.database.azure.com",
-    user: "prenotiamo_svc_ws",
-    password: "fvne45GHmy2chy6dsm",
+    host: process.env.DB_HOSTNAME,
+    user: process.env.DB_SERVICE_USER,
+    password: process.env.DB_SERVICE_USER_PASSWORD,
     database: "prenotiamo"
   })
 }
