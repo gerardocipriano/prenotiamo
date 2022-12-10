@@ -4,7 +4,8 @@ export default ({
     srcDir: "src",
     css:[
         "bootstrap/dist/css/bootstrap.css"
-    ]
+    ],
+    buildModules: ['@nuxtjs/color-mode']
 })
 
 // generating the html page fot 404 code
