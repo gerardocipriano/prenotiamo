@@ -37,7 +37,6 @@ export default defineComponent({
   }
 })
 </script>
-
 <template>
 <div class="container text-center">
   <h1>Antipasti</h1>
@@ -102,10 +101,6 @@ export default defineComponent({
     </div>
 </div>
 </template>
-
-
-
-
 
 <!-- <img :src="('/img/' + piatto.imgpiatto)" alt="" class="img-fluid rounded-start">
 <template>

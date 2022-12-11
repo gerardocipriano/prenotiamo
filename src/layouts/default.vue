@@ -7,7 +7,7 @@
     </Head>
     <div class="container-fluid min-vh-100">
         <div class="row justify-content-center">
-            <header class="header bg-gradient col-10 bg-blue border-top border-bottom border-2 border-secondary border-opacity-50 rounded-top">
+            <header class="header bg-gradient col-10 bg-blue border-top border-bottom border-2 border-secondary border-opacity-50 rounded-top shadow-lg">
                 <div class="d-flex align-items-center justify-content-between  p-3">
                     <div class="invisible">
                             <div class="fw-semibold  mr-2 text-center d-none d-md-block">Non sei registrato?</div>
@@ -20,14 +20,14 @@
                     </div>
                 </div>
             </header>
-            <div class="col-10 bg-light min-vh-100 border-bottom border-2 border-secondary border-opacity-50 rounded">
+            <div class="col-10 bg-light min-vh-100 border-bottom border-2 border-secondary border-opacity-50 rounded shadow-lg">
                 <div class="row mt-3">
                     <nav class="col-md-1 mb-3">
                         <ul class="nav flex-md-column flex-row text-end justify-content-around">
-                            <li class="nav-item border-bottom border-primary"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/">Home</NuxtLink></li>
-                            <li class="nav-item border-bottom border-primary"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/menu">Menu</NuxtLink></li>
-                            <li class="nav-item border-bottom border-primary"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/prenota">Prenota</NuxtLink></li>
-                            <li class="nav-item border-bottom border-primary"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/storico">Storico</NuxtLink></li>
+                            <li class="nav-item border-bottom border-primary border-opacity-50"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/">Home</NuxtLink></li>
+                            <li class="nav-item border-bottom border-primary border-opacity-50"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/menu">Menu</NuxtLink></li>
+                            <li class="nav-item border-bottom border-primary border-opacity-50"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/prenota">Prenota</NuxtLink></li>
+                            <li class="nav-item border-bottom border-primary border-opacity-50"><NuxtLink class="text-dark text-decoration-none fw-semibold" to="/storico">Storico</NuxtLink></li>
                         </ul>
                     </nav>
                     <main class="col-md-11">
