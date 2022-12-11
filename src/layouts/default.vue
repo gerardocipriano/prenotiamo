@@ -7,7 +7,7 @@
     </Head>
     <div class="container-fluid min-vh-100">
         <div class="row justify-content-center">
-            <header class=" bg-primary col-10 bg-blue border-top border-bottom border-2 border-secondary border-opacity-50 rounded-top">
+            <header class="header bg-gradient col-10 bg-blue border-top border-bottom border-2 border-secondary border-opacity-50 rounded-top">
                 <div class="d-flex align-items-center justify-content-between  p-3">
                     <div class="invisible">
                             <div class="fw-semibold  mr-2 text-center d-none d-md-block">Non sei registrato?</div>
@@ -41,4 +41,7 @@
 
 <style lang="scss">
 @import "~/assets/styles/_bootstrap_sass_assets.scss";
+.header{
+    background-color: $blue-400;
+}
 </style>
