@@ -7,25 +7,20 @@
     </Head>
     <div class="container-fluid min-vh-100">
         <div class="row justify-content-center">
-            <div class="col-10 bg-light min-vh-100 border-bottom border-2 border-secondary border-opacity-50 rounded">
-                <header>
-                    <div class="bg-primary row border-top border-bottom border-2 border-secondary border-opacity-50 rounded">
-                        <div class="col-5 my-3 text-end">
-                            <img class="border border-2 border-secondary border-opacity-50 rounded img-fluid" src="/img/splash_screen.jpeg" width="120" height="150" alt="prenotiamo splash screen" />
-                        </div>
-                        <div class="col-3">
-                            <div class="fw-semibold my-4 fs-1">Prenotiamo!</div>
-                        </div>
-                        <div class="col-4 text-end d-flex flex-row justify-content-end">
-                            <div class="row">
-                                <div class="col-12 fw-semibold mt-5 mr-2 text-center d-none d-md-block">Non sei registrato?</div>
-                                <div class="col-12 text-center align-self-end pb-1">
-                                    <NuxtLink class="btn btn-dark" to="/signup">Sign Up</NuxtLink>
-                                </div>
-                            </div>
-                        </div>
+            <header class=" bg-primary col-10 bg-blue border-top border-bottom border-2 border-secondary border-opacity-50 rounded-top">
+                <div class="d-flex align-items-center justify-content-between  p-3">
+                    <div class="invisible">
+                            <div class="fw-semibold  mr-2 text-center d-none d-md-block">Non sei registrato?</div>
+                            <NuxtLink class="btn btn-dark" to="/signup">Sign Up</NuxtLink> 
                     </div>
-                </header>
+                    <img class=" border border-2 border-secondary border-opacity-50 rounded img-fluid" src="/img/splash_screen.jpeg" width="120" height="150" alt="prenotiamo splash screen" />
+                    <div class=" text-center pb-1">
+                            <div class="fw-semibold  mr-2 text-center d-none d-md-block">Non sei registrato?</div>
+                            <NuxtLink class="btn btn-dark" to="/signup">Sign Up</NuxtLink> 
+                    </div>
+                </div>
+            </header>
+            <div class="col-10 bg-light min-vh-100 border-bottom border-2 border-secondary border-opacity-50 rounded">
                 <div class="row mt-3">
                     <nav class="col-md-1 mb-3">
                         <ul class="nav flex-md-column flex-row text-end justify-content-around">
@@ -44,3 +39,6 @@
     </div>
 </template>
 
+<style lang="scss">
+@import "~/assets/styles/_bootstrap_sass_assets.scss";
+</style>
