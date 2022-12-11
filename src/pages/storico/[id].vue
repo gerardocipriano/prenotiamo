@@ -4,12 +4,12 @@ import { History } from "../../types"
 export default defineComponent({
   data() {
     return {
-      history: null as History | null
+      History: [] as History[]
     }
   },
   methods: {
     getHistory() {
-      $fetch("/api/storico/" + this.$route.params.id).then(response => this.history = (response as any)[0])
+      $fetch("/api/storico/" + this.$route.params.id).then(response => this.History = response as History[])
     }
   },
   mounted() {
@@ -31,11 +31,11 @@ export default defineComponent({
                 <th id="note">Note</th>
             </tr>
           </thead>
-          <tr v-for="historicrow in history">
-            <td>{{ history?.date }}</td>
-            <td>{{ history?.food_name }}</td>
-            <td>{{ history?.price }}</td>
-            <td>{{ history?.note }}</td>
+          <tr v-for="historicrow in History">
+            <td>{{ historicrow.date }}</td>
+            <td>{{ historicrow.food_name }}</td>
+            <td>{{ historicrow.price }}</td>
+            <td>{{ historicrow.note }}</td>
           </tr>
         </table>
       </section>
