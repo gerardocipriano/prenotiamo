@@ -55,4 +55,8 @@
 .nav-item:active {
   border-style: solid;
 }
+.container-fluid {
+ background-image: url('/img/background-image-3.jpg');
+ background-size: cover;
+}
 </style>
