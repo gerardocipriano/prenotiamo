@@ -18,3 +18,8 @@ export interface Piatto {
     note: string
     date: number
   }
+
+  export interface Status {
+    value: string
+  }
+

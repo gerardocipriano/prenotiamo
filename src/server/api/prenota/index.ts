@@ -1,5 +1,4 @@
 import { createConnection } from "~/server/utils/db"
-import { DailyOrder } from "~/types"
 
 export default defineEventHandler(async function() {
   const connection = await createConnection()

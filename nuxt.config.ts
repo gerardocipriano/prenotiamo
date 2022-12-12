@@ -11,6 +11,8 @@ export default ({
         serviceUserPassword: process.env.DB_SERVICE_USER_PASSWORD,
         serviceAdmin: process.env.DB_SERVICE_ADMIN,
         serviceAdminPassword: process.env.DB_SERVICE_ADMIN_PASSWORD,
+        SMTPuser: process.env.SMTP_USERNAME,
+        SMTPpass: process.env.SMTP_PASSWORD
 
     }
 })

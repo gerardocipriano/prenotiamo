@@ -1,5 +1,7 @@
 <script lang="ts">
+import { stringLiteral } from "@babel/types"
 import { DailyOrder } from "../types"
+import { Status } from "../types"
 
 export default defineComponent({
 
@@ -7,11 +9,15 @@ export default defineComponent({
   data() {
     return {
       DailyOrder: [] as DailyOrder[],
+      Status: [] as Status[],
     }
   },
   methods: {
     getDailyOrders() {
       $fetch("/api/prenota/").then(response => this.DailyOrder = response as DailyOrder[])
+    },
+    sendMail(){
+      $fetch("/api/mail")
     },
   },
   mounted() {
@@ -39,6 +45,8 @@ export default defineComponent({
       </tr>
     </table>
   </section>
+  <button type="button" @click="sendMail()" class="btn btn-primary btn-rounded">Prenota</button>
+  {{ Status }}
 </div>
 </template>
 
