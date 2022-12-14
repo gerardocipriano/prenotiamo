@@ -19,7 +19,3 @@ export interface Piatto {
     date: number
   }
 
-  export interface Status {
-    value: string
-  }
-

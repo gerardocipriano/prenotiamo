@@ -5,7 +5,7 @@ export default ({
     css:[
         "bootstrap/dist/css/bootstrap.css"
     ],
-    PrivateruntimeConfig: {
+    runtimeConfig: {
         databaseName: process.env.DB_HOSTNAME,
         serviceUserName: process.env.DB_SERVICE_USER,
         serviceUserPassword: process.env.DB_SERVICE_USER_PASSWORD,

@@ -1,4 +1,5 @@
 import transport from "~/server/utils/mail"
+import { DailyOrder } from "~/types"
 
 transport.verify(function(error, success) {
     if (error) {
@@ -16,12 +17,12 @@ transport.verify(function(error, success) {
     html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer'
 };
 
-export function sendMail() {
-transport.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        return console.log(error);
+
+export default defineEventHandler(async function() {
+    try {
+        return await transport.sendMail(mailOptions)
+    } catch(err) {
+       console.log(err)
+       return err
     }
-    console.log('Message sent: %s', info.messageId);
-    return info.messageId;
 });
-}
