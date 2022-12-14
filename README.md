@@ -22,6 +22,17 @@
 
   <p align="center">
     A website that collects food orders and then allow users to forward the list to the restaurant
+    <br />
+    <a href="https://github.com/gerardocipriano/prenotiamo"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://prenotiamo.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/gerardocipriano/prenotiamo/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/gerardocipriano/prenotiamo/issues">Request Feature</a>
+  </p>
+</div>
 </div>
 
 
@@ -123,12 +134,12 @@ DESCRIVI PAGINA INVIO ORDINE
 ## Roadmap
 
 Mandatory features:
-- [ ] Design Mockup
-- [ ] Build DB & SQL instructions
+- [x] Design Mockup
+- [x] Build DB & SQL instructions
 - [ ] Register & Login 
 - [ ] Write CSS
-- [ ] Render menù in the "Menù" page
-- [ ] Users can view their past orders
+- [x] Render menù in the "Menù" page
+- [x] Users can view their past orders
 - [ ] Users can close the order
 - [ ] Users can choose one dish of their choose from the menu
 - [ ] Assess accesibility
@@ -139,8 +150,11 @@ Optional featues:
 - [X] Design Graphics
 - [ ] Display username in the top of the page
 - [ ] Back to top button
-- [ ] SMTP function using https://nodemailer.com/
-- [ ] Hosting the webserver on Azure
+- [ ] Push notification to all logged in users when the order is sent to the restaurant
+- [ ] Admin user that can add more entries in the menu
+- [ ] Delegated user that can send the order and make order for other users
+- [x] SMTP function using https://nodemailer.com/
+- [x] Hosting the webserver on Netlify
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
