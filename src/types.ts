@@ -6,7 +6,8 @@ export interface Piatto {
   }
 
   export interface DailyOrder {
-    username: string
+    name: string
+    company: string
     food_name: string
     date: number
     note: string
@@ -17,5 +18,10 @@ export interface Piatto {
     price: number
     note: string
     date: number
+  }
+
+  export interface Company {
+    company_id: number
+    name: String
   }
 

@@ -1,5 +1,4 @@
 <script lang="ts">
-import { stringLiteral } from "@babel/types"
 import { DailyOrder } from "../types"
 
 export default defineComponent({
@@ -8,7 +7,6 @@ export default defineComponent({
   data() {
     return {
       DailyOrder: [] as DailyOrder[],
-
     }
   },
   methods: {
@@ -27,18 +25,20 @@ export default defineComponent({
 
 <template>
 <div class="container text-center">
-  <h1>Ordini del giorno</h1>
+  <h1>Ordini del giorno {{Date.now()}}</h1>
   <section class="mt-1">
     <table class="table table-striped">
       <thead class="black white-text">
         <tr>
-            <th id="username">Username</th>
-            <th id="readingTime">Piatto</th>
+            <th id="name">Nome</th>
+            <th id="company">Azienda</th>
+            <th id="dish">Piatto</th>
             <th id="note">Note</th>
         </tr>
       </thead>
       <tr v-for="orders in DailyOrder">
-        <td>{{ orders.username }}</td>
+        <td>{{ orders.name }}</td>
+        <td>{{ orders.company }}</td>
         <td>{{ orders.food_name }}</td>
         <td>{{ orders.note }}</td>
       </tr>
@@ -49,4 +49,5 @@ export default defineComponent({
 </template>
 
 
+  
   
