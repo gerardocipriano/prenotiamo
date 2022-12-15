@@ -1,12 +1,15 @@
 <script lang="ts">
 import { DailyOrder } from "../types"
+const date = new Date()
+const day = date.getDate().toString().padStart(2, "0") + "/" +(date.getMonth() + 1).toString().padStart(2, "0") 
 
 export default defineComponent({
-
+  
   
   data() {
     return {
       DailyOrder: [] as DailyOrder[],
+      day,
     }
   },
   methods: {
@@ -25,7 +28,7 @@ export default defineComponent({
 
 <template>
 <div class="container text-center">
-  <h1>Ordini del giorno {{Date.now()}}</h1>
+  <h1>Ordini del giorno {{ day }}</h1>
   <section class="mt-1">
     <table class="table table-striped">
       <thead class="black white-text">

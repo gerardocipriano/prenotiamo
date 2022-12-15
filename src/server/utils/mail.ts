@@ -11,5 +11,3 @@ const transport = nodemailer.createTransport({
     }
 });
 export default transport;
-
-console.log(process.env.MAILTRAP_SECRET)

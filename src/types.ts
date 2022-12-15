@@ -25,3 +25,9 @@ export interface Piatto {
     name: String
   }
 
+export interface User {
+  id: number
+  name: string
+  password: string
+  company: string
+}
