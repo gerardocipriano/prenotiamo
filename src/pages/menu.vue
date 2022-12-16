@@ -1,7 +1,7 @@
 <script lang="ts">
 import { userInfo } from "os"
 import { Piatto } from "../types"
-const date = new Date()
+
 export default defineComponent({
   data() {
     return {
@@ -34,8 +34,8 @@ export default defineComponent({
         method: "POST",
         body: {
           User: this.User,
-          Food_name: foodname.innerHTML,
-          Note: notes.innerHTML
+          Food_name: this.Food_name,
+          Note: this.Note
         }
       })
         .then(() => window.location.href = "/menu")
@@ -61,7 +61,7 @@ export default defineComponent({
           </div>
           <div class="col-lg-8">
               <div class="card-body mt-3">
-                <h3 class="card-title" id="last">{{piatto.food_name}}</h3>
+                <h3 class="card-title">{{piatto.food_name}}</h3>
                 <h4 class="card-text text-primary">{{piatto.price}}€</h4>
                 <button type="button" @click="onSubmit" class="btn btn-dark">Aggiungi</button>
               </div>
