@@ -2,45 +2,6 @@
 
 # Analisi
 
-In questo capitolo andrà fatta l'analisi dei requisiti e quella del
-problema, ossia verranno elencate le cose che l'applicazione dovrà fare
-(requisiti) e verrà descritto il dominio applicativo (analisi del
-problema). In fase di analisi, è molto importante tenere a mente che non
-vi deve essere alcun riferimento al design né tantomeno alle tecnologie
-implementative, ovvero, non si deve indicare come il software sarà
-internamente realizzato. La fase di analisi, infatti, *precede*
-qualunque azione di design o di implementazione.
-
-## Requisiti
-
-Nell'analisi dei *requisiti* dell'applicazione si dovrà spiegare cosa
-l'applicazione dovrà fare. Non ci si deve concentrare sui particolari
-problemi, ma esclusivamente su cosa si desidera che l'applicazione
-faccia. Al termine della lettura della sezione, il docente deve avere
-un'idea molto chiara di cosa l'applicazione sia.
-
-### Elementi positivi
-
--   Si fornisce una descrizione in linguaggio naturale di ciò che il
-    software dovrà fare.
--   Gli obiettivi sono spiegati con chiarezza, per punti.
--   Se vi sono termini il cui significato non è immediatamente
-    intuibile, essi vengono spiegati.
--   Considerato a un paio di pagine un limite ragionevole alla lunghezza
-    della parte sui requisiti, in quello spazio si deve cercare di
-    chiarire *tutti* gli aspetti dell'applicazione, non lasciando
-    decisioni che impattano la parte "esterna" alla discussione del
-    design (che dovrebbe solo occuparsi della parte "interna").
-
-### Elementi negativi
-
--   Si forniscono indicazioni circa le soluzioni che si vogliono
-    adottare.
--   Si forniscono dettagli di tipo tecnico o implementativo (parlando di
-    classi, linguaggi di programmazione, librerie, eccetera).
-
-# Analisi
-
 Il software "Prenotiamo!" è commissionato da un aggregato di aziende nella stessa palazzina, si pone l'obbiettivo di informatizzare il processo di prenotazione pranzo per i rispettivi dipendenti.
 Al momento, per ogni azienda, c'è un dipendente che si prende in carico la raccolta delle prenotazioni dagli altri colleghi. Questo processo è un enorme spreco di tempo per il dipendente "ordinante", che deve scrivere o chiamare ciascun collega per raccogliere la rispettiva preferenza.
 La mensa è unica e si trova al piano terra dello stabile. La lista degli ordini che arriva in cucina, è composta dalle prenotazione di tutti i dipendenti delle aziende. La convenzione in essere con la mensa, permette ai dipendenti di scegliere una sola portata dal menu.
