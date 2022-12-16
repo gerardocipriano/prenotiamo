@@ -1,6 +1,7 @@
 <script lang="ts">
+import { userInfo } from "os"
 import { Piatto } from "../types"
-
+const date = new Date()
 export default defineComponent({
   data() {
     return {
@@ -9,7 +10,10 @@ export default defineComponent({
       Primi: [] as Piatto[],
       Secondi: [] as Piatto[],
       Pizze: [] as Piatto[]
-      }
+      },
+      User: "",
+      Food_name: "",
+      Note: ""
     }
   },
   methods: {
@@ -25,6 +29,18 @@ export default defineComponent({
     getPizze() {
       $fetch("/api/menu/pizze").then(response => this.Portate.Pizze = response as Piatto[])
     },
+    onSubmit() {
+      $fetch("/api/menu", {
+        method: "POST",
+        body: {
+          User: this.User,
+          Food_name: foodname.innerHTML,
+          Note: notes.innerHTML
+        }
+      })
+        .then(() => window.location.href = "/menu")
+        .catch((e) => alert(e))
+    }
   },
   mounted() {
     this.getAntipasti()
@@ -45,9 +61,9 @@ export default defineComponent({
           </div>
           <div class="col-lg-8">
               <div class="card-body mt-3">
-                <h3 class="card-title">{{piatto.food_name}}</h3>
+                <h3 class="card-title" id="last">{{piatto.food_name}}</h3>
                 <h4 class="card-text text-primary">{{piatto.price}}€</h4>
-                <button type="button" class="btn btn-dark">Aggiungi</button>
+                <button type="button" @click="onSubmit" class="btn btn-dark">Aggiungi</button>
               </div>
           </div>
         </div> 

@@ -64,7 +64,7 @@ export default defineComponent({
                     <button class="btn btn-dark btn-lg btn-block" type="submit" name="submit" value="Login" >Login</button>
                   </div>
 
-                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <nuxt-link to="/signup">Register here</nuxt-link></p>
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <nuxt-link to="/register">Register here</nuxt-link></p>
                   <nuxt-link to="/termsofservice">Terms of service.</nuxt-link>
                   
                 </form>
