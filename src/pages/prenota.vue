@@ -1,5 +1,7 @@
 <script lang="ts">
 import { DailyOrder } from "../types"
+const order_list = document.querySelector('table') as HTMLInputElement | null;
+
 const date = new Date()
 const day = date.getDate().toString().padStart(2, "0") + "/" +(date.getMonth() + 1).toString().padStart(2, "0") 
 
@@ -10,6 +12,7 @@ export default defineComponent({
     return {
       DailyOrder: [] as DailyOrder[],
       day,
+      order_list,
     }
   },
   methods: {
@@ -17,13 +20,19 @@ export default defineComponent({
       $fetch("/api/prenota/").then(response => this.DailyOrder = response as DailyOrder[])
     },
     sendMail(){
-      $fetch("/api/prenota/mail");
+      $fetch("/api/prenota/mail",{
+        method: "POST",
+        body: {
+          order_list : this.order_list,
+          }
+      });
     },
   },
   mounted() {
     this.getDailyOrders()
   }
 })
+
 </script>
 
 <template>

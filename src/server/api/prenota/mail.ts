@@ -1,5 +1,4 @@
 import transport from "~/server/utils/mail"
-import { DailyOrder } from "~/types"
 
 transport.verify(function(error, success) {
     if (error) {

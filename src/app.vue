@@ -16,7 +16,7 @@
                     <img class="border border-2 border-secondary border-opacity-50 rounded img-fluid" src="/img/splash_screen.jpeg" width="120" height="150" alt="prenotiamo splash screen" />
                     <div class="text-center pb-1">
                             <div class="fw-semibold  mr-2 text-center d-none d-md-block">Non sei registrato?</div>
-                            <NuxtLink class="btn btn-dark" to="/signup">Sign Up</NuxtLink> 
+                            <NuxtLink class="btn btn-dark" to="/register">Sign Up</NuxtLink> 
                     </div>
                 </div>
             </header>

@@ -7,12 +7,30 @@ export default defineComponent({
   data() {
     return {
       Company: [] as Company[],
+      registerName: "",
+      registerPassword: "",
+      registerEmail: "",
+      registerCompany: "",
+
     }
   },
   methods: {
     getCompanies() {
       $fetch("/api/company/").then(response => this.Company = response as Company[])
     },
+    onRegisterSubmit() {
+      $fetch("/api/auth/register", {
+        method: "POST",
+        body: {
+          name: this.registerName,
+          password: this.registerPassword,
+          email: this.registerEmail,
+          company: this.registerCompany
+        }
+      })
+        .then(() => window.location.href = "/")
+        .catch((e) => alert(e))
+    }
 
   },
   mounted() {
@@ -20,6 +38,7 @@ export default defineComponent({
   }
 })
 </script>
+
 
 <template>
 <section class="vh-100" style="background-color: #eee;">
@@ -33,25 +52,25 @@ export default defineComponent({
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                <form class="mx-1 mx-md-3">
+                <form @submit.prevent="onRegisterSubmit" class="mx-1 mx-md-3" >
 
                   <div class="d-flex flex-row align-items-center mb-3">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" class="form-control" />
+                      <input type="text" id="register-name" name="register-name" v-model="registerName" class="form-control" required/>
                       <label class="form-label" for="form3Example1c">Your Name</label>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-3">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="email" id="form3Example3c" class="form-control" />
+                      <input type="email" id="register-mail" name="register-mail" v-model="registerEmail" class="form-control" required />
                       <label class="form-label" for="form3Example3c">Your Email</label>
                     </div>
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-3">
-                    <select class="form-select form-outline flex-fill mb-0">
+                    <select type="text" id="register-company" name="register-company" v-model="registerCompany" class="form-select form-outline flex-fill mb-0" required>
                       <option selected disabled>Company</option>
                         <option v-for="x in Company">{{ x.name }}</option>
                     </select>
@@ -60,28 +79,20 @@ export default defineComponent({
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" class="form-control" />
+                      <input input type="password" id="register-password" name="register-password" v-model="registerPassword"  class="form-control" required/>
                       <label class="form-label" for="form3Example4c">Password</label>
                     </div>
                   </div>
 
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4cd" class="form-control" />
-                      <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                    </div>
-                  </div>
-
                   <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" required />
                     <label class="form-check-label" for="form2Example3">
                       I agree all statements in <nuxt-link to="/termsofservice">Terms of service</nuxt-link>
                     </label>
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg">Register</button>
+                    <input type="submit" name="submit" value="Register" class="btn btn-primary btn-lg"/>
                   </div>
 
                 </form>
