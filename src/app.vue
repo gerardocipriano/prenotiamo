@@ -53,19 +53,20 @@
     background-color: $blue-400;
 }
 .nav-item:active {
-  border-style: solid;
+    border-style: solid;
 }
 .container-fluid {
- background-image: url('/img/background-image-3.jpg');
- background-size: cover;
+    background-image: url('/img/background-image-3.jpg');
+    background-size: 60%;
 }
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.1s;
+    transition: all 0.1s;
 }
 .page-enter-from,
 .page-leave-to {
-  opacity: 0;
-  filter: blur(1rem);
+    opacity: 0;
+    filter: blur(1rem);
 }
 </style>
+
