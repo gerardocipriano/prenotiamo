@@ -40,10 +40,10 @@ export default defineComponent({
       <h1>{{key}}</h1>
       <div v-for="piatto in portata" class="card mb-3">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-lg-4">
             <img src="/img/food_default.jpg" alt="" class="img-fluid rounded-start img-thumbnail" >
           </div>
-          <div class="col-md-8">
+          <div class="col-lg-8">
               <div class="card-body mt-3">
                 <h3 class="card-title">{{piatto.food_name}}</h3>
                 <h4 class="card-text text-primary">{{piatto.price}}€</h4>
