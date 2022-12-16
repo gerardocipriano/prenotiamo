@@ -10,7 +10,7 @@
             <header class="header bg-gradient col-10 bg-blue border-top border-bottom border-2 border-secondary border-opacity-50 rounded-top shadow-lg">
                 <div class="d-flex align-items-center justify-content-between p-3">
                     <div class="invisible">
-                            <div class="fw-semibold mr-2 text-center d-none d-md-block">Non sei registrato?</div>
+                            <div class="fw-semibold mr-2 text-center d-none d-lg-block">Non sei registrato?</div>
                             <NuxtLink class="btn btn-dark" to="/signup">Sign Up</NuxtLink> 
                     </div>
                     <img class="border border-2 border-secondary border-opacity-50 rounded img-fluid" src="/img/splash_screen.jpeg" width="120" height="150" alt="prenotiamo splash screen" />
@@ -22,8 +22,8 @@
             </header>
             <div class="col-10 bg-light min-vh-100 border-bottom border-2 border-secondary border-opacity-50 rounded shadow-lg">
                 <div class="row mt-3">
-                    <nav class="col-md-1 mt-1 mb-4">
-                        <ul class="nav nav-fill flex-md-column flex-row text-center justify-content-around">
+                    <nav class="col-lg-1 mt-1 mb-4">
+                        <ul class="nav nav-fill flex-lg-column flex-row text-center justify-content-around">
                             <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
                                 <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/">Home</NuxtLink>
                             </li>
@@ -38,7 +38,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <main class="col-md-11">
+                    <main class="col-lg-11">
                         <NuxtPage/>
                     </main>
                 </div>
@@ -53,19 +53,20 @@
     background-color: $blue-400;
 }
 .nav-item:active {
-  border-style: solid;
+    border-style: solid;
 }
 .container-fluid {
- background-image: url('/img/background-image-3.jpg');
- background-size: cover;
+    background-image: url('/img/background-image-3.jpg');
+    background-size: 60%;
 }
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.1s;
+    transition: all 0.1s;
 }
 .page-enter-from,
 .page-leave-to {
-  opacity: 0;
-  filter: blur(1rem);
+    opacity: 0;
+    filter: blur(1rem);
 }
 </style>
+

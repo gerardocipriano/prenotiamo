@@ -56,7 +56,7 @@ export default defineComponent({
       </tr>
     </table>
   </section>
-  <button type="button" @click="sendMail()"  class="btn btn-primary btn-rounded">Prenota</button>
+  <button type="button" @click="sendMail()"  class="btn btn-dark btn-rounded">Prenota</button>
 </div>
 </template>
 
