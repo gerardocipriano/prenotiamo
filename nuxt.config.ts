@@ -14,7 +14,10 @@ export default ({
         SMTPuser: process.env.SMTP_USERNAME,
         SMTPpass: process.env.SMTP_PASSWORD
 
-    }
+    },
+    app: {
+        pageTransition: { name: 'page', mode: 'out-in' }
+      }
 })
 
 // generating the html page fot 404 code
