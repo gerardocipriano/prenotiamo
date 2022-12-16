@@ -1,3 +1,34 @@
+<script lang="ts">
+import { User } from "~/types"
+
+export default defineComponent({
+  // Fornisce l'oggetto user a tutti i componenti dell'applicativo
+  provide() {
+    return {
+      user: computed(() => this.user)
+    }
+  },
+  data() {
+    return {
+      user: null as User | null
+    }
+  },
+  methods: {
+    async getUser() {
+      const user = await $fetch("/api/auth/profilo")
+      this.user = user
+    },
+    async logout() {
+      await $fetch("/api/auth/logout").then(() => window.location.href = "/")
+      this.getUser()
+    }
+  },
+  mounted() {
+    this.getUser()
+  }
+})
+</script>
+
 <template>
     <Head>
             <Title>Prenotiamo!</Title>
@@ -11,12 +42,13 @@
                 <div class="d-flex align-items-center justify-content-between p-3">
                     <div class="invisible">
                             <div class="fw-semibold mr-2 text-center d-none d-lg-block">Non sei registrato?</div>
-                            <NuxtLink class="btn btn-dark" to="/signup">Sign Up</NuxtLink> 
+                            <NuxtLink class="btn btn-dark" to="/register">Sign Up</NuxtLink> 
                     </div>
                     <img class="border border-2 border-secondary border-opacity-50 rounded img-fluid" src="/img/splash_screen.jpeg" width="120" height="150" alt="prenotiamo splash screen" />
                     <div class="text-center pb-1">
-                            <div class="fw-semibold  mr-2 text-center d-none d-md-block">Non sei registrato?</div>
-                            <NuxtLink class="btn btn-dark" to="/register">Sign Up</NuxtLink> 
+                            <div v-if="!user" class="fw-semibold  mr-2 text-center d-none d-md-block">Non sei registrato?</div>
+                            <NuxtLink v-if="!user" class="btn btn-dark" to="/register">Sign Up</NuxtLink> 
+                            <li v-else class="list-group-item"><a href="#" class="btn btn-dark" @click.prevent="logout">Logout</a></li>
                     </div>
                 </div>
             </header>
@@ -49,6 +81,7 @@
 
 <style lang="scss">
 @import "~/assets/styles/_bootstrap_sass_assets.scss";
+
 .header{
     background-color: $blue-400;
 }

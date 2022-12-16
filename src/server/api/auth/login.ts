@@ -10,7 +10,6 @@ export default defineEventHandler(async function(event) {
 
   // Estrae username e password dal body della richiesta
   const { email, password } = await readBody(event)
-
   // Esegue la query al database per ottenere i dati dell'utente in base allo username
   const connection = await createConnection()
   const [results] = await connection.execute(
@@ -22,7 +21,7 @@ export default defineEventHandler(async function(event) {
 
   // Errore se l'utente non è stato trovato
   if (!Array.isArray(results) || results.length == 0) {
-    throw createError({ statusCode: 400, statusMessage: "Invalid Credentials"})
+    throw createError({ statusCode: 400, statusMessage: "Missing mail Credentials"})
   }
 
   const user = results[0] as any

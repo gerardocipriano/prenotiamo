@@ -29,9 +29,9 @@ export function decodingUser(event: H3Event) {
   }
 }
 
-export function deleteCookie(event: H3Event) {
+export function removeUser(event: H3Event) {
   // Cancella il cookie dell'access token DA VERIFICARE ARGOMENTI
-  deleteCookie(event)
+  deleteCookie(event, cookieName)
 }
 
 /** Blocca la richiesta se l'utente non ha effettuato il login */

@@ -1,10 +1,10 @@
-import { decodingUser, requireLogin, deleteCookie } from "~/server/utils/auth"
+import { decodingUser, requireLogin, removeUser } from "~/server/utils/auth"
 
 export default defineEventHandler(async function(event) {
   // Blocca la richiesta se l'utente non ha effettuato il login
-  const user = deleteCookie(event)
-  requireLogin(user!)
+  const user = decodingUser(event)
+  requireLogin(user)
   // Cancella il cookie contenente l'access token
-  deleteCookie(event)
+  removeUser(event)
   return { message: "Logged Out" }
 })
