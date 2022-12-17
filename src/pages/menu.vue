@@ -1,5 +1,7 @@
 <script lang="ts">
 import { Piatto } from "../types"
+import {ref} from 'vue';
+const dish = ref('');
 
 export default defineComponent({
   data() {
@@ -8,8 +10,10 @@ export default defineComponent({
       Antipasti: [] as Piatto[],
       Primi: [] as Piatto[],
       Secondi: [] as Piatto[],
-      Pizze: [] as Piatto[]
-      }
+      Pizze: [] as Piatto[],
+      },
+      dish,
+      note: "",
     }
   },
   methods: {
@@ -25,6 +29,17 @@ export default defineComponent({
     getPizze() {
       $fetch("/api/menu/pizze").then(response => this.Portate.Pizze = response as Piatto[])
     },
+    sendOrder(dish: string) {
+      this.dish = dish;
+      console.log(dish)
+      $fetch("/api/menu/", {
+        method: "POST",
+        body: {
+          dish: this.dish,
+          note: this.note,
+        }
+      })
+    },
   },
   mounted() {
     this.getAntipasti()
@@ -36,6 +51,8 @@ export default defineComponent({
 </script>
 <template>
   <div class="container text-center">
+    <input type="text" id="note" name="note" v-model="note" class="form-control"  />
+    <label class="form-label" for="form3Example3c">Inserisci qui le -eventuali- note per la mensa, PRIMA di premere il tasto "Prenota"</label>
     <div v-for="portata,key in Portate">
       <h1>{{key}}</h1>
       <div v-for="piatto in portata" class="card mb-3">
@@ -47,7 +64,7 @@ export default defineComponent({
               <div class="card-body mt-3">
                 <h3 class="card-title">{{piatto.food_name}}</h3>
                 <h4 class="card-text text-primary">{{piatto.price}}€</h4>
-                <button type="button" class="btn btn-dark">Aggiungi</button>
+                <button type="button" @click="sendOrder(piatto.food_name)" class="btn btn-dark">Aggiungi</button>
               </div>
           </div>
         </div> 
