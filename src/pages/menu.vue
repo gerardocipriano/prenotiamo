@@ -51,8 +51,8 @@ export default defineComponent({
 </script>
 <template>
   <div class="container text-center">
-    <input type="text" id="note" name="note" v-model="note" class="form-control"  />
-    <label class="form-label" for="form3Example3c">Inserisci qui le -eventuali- note per la mensa, PRIMA di premere il tasto "Prenota"</label>
+    
+    <label class="form-label" for="form3Example3c"><input type="text" id="note" name="note" v-model="note" class="form-control"  />Inserisci qui le -eventuali- note per la mensa, PRIMA di premere il tasto "Aggiungi"</label>
     <div v-for="portata,key in Portate">
       <h1>{{key}}</h1>
       <div v-for="piatto in portata" class="card mb-3">
