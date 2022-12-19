@@ -71,6 +71,9 @@ export default defineComponent({
                             <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
                                 <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/delega">Delega</NuxtLink>
                             </li>
+                            <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
+                                <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/aggiungi">Aggiungi</NuxtLink>
+                            </li>
                         </ul>
                     </nav>
                     <main class="col-lg-11">
