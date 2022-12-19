@@ -1,5 +1,6 @@
 import transport from "~/server/utils/mail"
-import { decodingUser, requireLogin } from "../../utils/auth"
+import { decodingUser, requireLogin } from "~/server/utils/auth"
+import { DailyOrder } from "~/types"
 
 transport.verify(function(error, success) {
     if (error) {
@@ -16,23 +17,38 @@ export default defineEventHandler(async function(event) {
     
     const user = decodingUser(event)
     requireLogin(user)
+    let html: string = `<!doctype html><html lang="it"><h1 style="font-family: Arial, Helvetica, sans-serif">Buongiorno, 
+    Di seguito le prenotazioni del giorno:</h1>
+    <section class="mt-1">
+    <table style="border-collapse: collapse" >
+      <thead >
+        <tr>
+            <th style="padding-top: 12px;padding-bottom: 12px;text-align: left;background-color: #1082F3;color: white;  border-collapse: collapse;width: 25%; font-family: Arial, Helvetica, sans-serif" id="name">Nome</th>
+            <th style="padding-top: 12px;padding-bottom: 12px;text-align: left;background-color: #1082F3;color: white;  border-collapse: collapse;width: 25%; font-family: Arial, Helvetica, sans-serif" id="company">Azienda</th>
+            <th style="padding-top: 12px;padding-bottom: 12px;text-align: left;background-color: #1082F3;color: white;  border-collapse: collapse;width: 25%; font-family: Arial, Helvetica, sans-serif" id="dish">Piatto</th>
+            <th style="padding-top: 12px;padding-bottom: 12px;text-align: left;background-color: #1082F3;color: white;  border-collapse: collapse;width: 25%; font-family: Arial, Helvetica, sans-serif" id="note">Note</th>
+        </tr>
+      </thead>`
+    let order_tdst: DailyOrder[] = await readBody(event)
+    console.log(order_tdst)
 
-    let { order_list } = await readBody(event)
-    console.log(order_list)
+    order_tdst.forEach( (x) => {
+      html += `<tr style="tr:hover"><td style="padding: 8px;font-family: Arial, Helvetica, sans-serif">`+x.name+`</td>`
+      html += `<td style="padding: 8px;font-family: Arial, Helvetica, sans-serif">`+x.company+`</td>`
+      html += `<td style="padding: 8px;font-family: Arial, Helvetica, sans-serif">`+x.food_name+`</td>`
+      html += `<td style="padding: 8px;font-family: Arial, Helvetica, sans-serif">`+x.note+`</td></tr>`
+  });
 
-    const parola = "ciao"
+  html+=`</html>`
 
+
+    console.log(html)
     let mailOptions = {
     
         to: 'user1@example.com',
         subject: 'Ordine del giorno',
         text: '',
-        html: `<!doctype html>
-          <html lang="it">
-          <p>Buongiorno, Di seguito le prenotazioni del giorno:</p> ${order_list} 
-          <p>Cordialmente</p>
-          <footer><p><i>Prenotiamo! Automatic Mail System</i></p></footer>
-          </html>`
+        html: html
     };
     try {
         return await transport.sendMail(mailOptions)
