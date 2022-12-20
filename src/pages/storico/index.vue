@@ -18,7 +18,12 @@ export default defineComponent({
   },
   methods: {
     getHistory() {
-      $fetch("/api/storico/" + this.user?.id).then(response => this.Storico = response as History[])
+      if(this.user?.role == "Ristorante"){
+        $fetch("/api/storico/").then(response => this.Storico = response as History[])
+      }
+      else {
+        $fetch("/api/storico/" + this.user?.id).then(response => this.Storico = response as History[])
+      }
     }
   },
   mounted() {

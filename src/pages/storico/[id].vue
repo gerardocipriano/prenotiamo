@@ -1,15 +1,19 @@
 <script  lang="ts">
 import { History } from "../../types"
 
+definePageMeta({
+  middleware: ["require-login", "require-ristorante"]
+})
+
 export default defineComponent({
   data() {
     return {
-      History: [] as History[]
+      Storico: [] as History[]
     }
   },
   methods: {
     getHistory() {
-      $fetch("/api/storico/" + this.$route.params.id).then(response => this.History = response as History[])
+      $fetch("/api/storico/" + this.$route.params.id).then(response => this.Storico = response as History[])
     }
   },
   mounted() {
@@ -31,10 +35,9 @@ export default defineComponent({
                 <th id="note">Note</th>
             </tr>
           </thead>
-          <tr v-for="historicrow in History">
+          <tr v-for="historicrow in Storico">
             <td>{{ historicrow.date }}</td>
             <td>{{ historicrow.food_name }}</td>
-            <td>{{ historicrow.price }}</td>
             <td>{{ historicrow.note }}</td>
           </tr>
         </table>
