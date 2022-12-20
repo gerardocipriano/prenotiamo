@@ -31,8 +31,7 @@ export default defineComponent({
             course: this.plateSelect,
             }
       })
-      .then(() => window.location.href = "/inserimento")
-      .catch((e) => alert(e))
+
     },
     deleteFood() {
       $fetch("/api/inserimento/delete", {
@@ -41,8 +40,6 @@ export default defineComponent({
           plateDelete: this.plateDelete,
         }
       })
-      .then(() => window.location.href = "/inserimento")
-      .catch((e) => alert(e))
     },
   },
   mounted() {
@@ -62,17 +59,17 @@ export default defineComponent({
                                 <h3>Aggiungi al menu</h3>
                                 <div class="row justify-content-center">
                                     <div class="col-lg-4">
-                                        <label class="form-label" for="form3Example3c">
+                                        <label class="form-label" for="piatto">
                                             <input type="text" id="piatto" name="piatto" v-model="plateName" class="form-control"  />Nome piatto
                                         </label>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label class="form-label" for="form3Example3c">
+                                        <label class="form-label" for="prezzo">
                                             <input type="text" id="prezzo" name="prezzo" v-model="platePrice" class="form-control"  />Prezzo
                                         </label>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label class="form-label" for="form3Example3c">
+                                        <label class="form-label" for="portata">
                                             <select type="text" id="portata" name="portata" v-model="plateSelect" class="form-select form-outline flex-fill mb-0" required>
                                                 <option selected disabled>Portata</option>
                                                 <option v-for="x in Courses">{{ x.course }}</option>
@@ -90,8 +87,8 @@ export default defineComponent({
                                 <h3 class="mt-5">Elimina dal menu</h3>
                                 <div class="row justify-content-center">
                                     <div class="col">
-                                        <label class="form-label" for="form3Example3c">
-                                            <select type="text" id="piatto" name="piatto" v-model="plateDelete" class="form-select form-outline flex-fill mb-0" required>
+                                        <label class="form-label" for="dPiatto">
+                                            <select type="text" id="dPiatto" name="dPiatto" v-model="plateDelete" class="form-select form-outline flex-fill mb-0" required>
                                                 <option selected disabled>Piatto</option>
                                                 <option v-for="x in Plates">{{ x.food_name }}</option>
                                             </select>Seleziona piatto

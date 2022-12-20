@@ -30,6 +30,7 @@ export default defineComponent({
 </script>
 
 <template>
+
     <Head>
             <Title>Prenotiamo!</Title>
             <Meta name="description" content="Prenotiamo!.app" />
@@ -88,6 +89,7 @@ export default defineComponent({
             </div>
         </div>
     </div>
+
 </template>
 
 <style lang="scss">

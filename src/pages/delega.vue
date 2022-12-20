@@ -66,18 +66,18 @@ export default defineComponent({
                     <form @submit.prevent="sendOrderOnBehalfOf()" class="mx-1 mx-md-3" >
                       <h3>Aggiunta manuale ordine</h3>
                         <p>Seleziona l'utente per cui vuoi aggiungere l'ordine:</p>
-                        <label class="form-label" for="form3Example3c"><input type="text" id="note" name="note" v-model="delegatedNote" class="form-control"  />Inserisci qui le -eventuali- note per la mensa, PRIMA di premere il tasto "Invia Ordine"</label>
+                        <label class="form-label" for="note"><input type="text" id="note" name="note" v-model="delegatedNote" class="form-control"  />Inserisci qui le -eventuali- note per la mensa, PRIMA di premere il tasto "Invia Ordine"</label>
 
                         <div class="d-flex flex-row align-items-center mb-3">
-                          <label class="form-label" for="form3Example3c">
-                            <select type="text" id="User" name="User" v-model="delegatedUser" class="form-select form-outline flex-fill mb-0" required>
+                          <label class="form-label" for="dUser">
+                            <select type="text" id="dUser" name="dUser" v-model="delegatedUser" class="form-select form-outline flex-fill mb-0" required>
                             <option selected disabled>Utente</option>
                               <option v-for="x in User">{{ x.id }} - {{ x.name }}</option>
                             </select>Seleziona l'utente</label>
                         </div>
 
                         <div class="d-flex flex-row align-items-center mb-3">
-                          <label class="form-label" for="form3Example3c"><select type="text" id="User" name="User" v-model="delegatedDish" class="form-select form-outline flex-fill mb-0" required>
+                          <label class="form-label" for="Dish"><select type="text" id="Dish" name="Dish" v-model="delegatedDish" class="form-select form-outline flex-fill mb-0" required>
                             <option selected disabled>Piatto</option>
                               <option v-for="piatto in Portata">{{ piatto.food_name }}</option>
                           </select>Seleziona il piatto</label>
@@ -92,8 +92,8 @@ export default defineComponent({
                         <h3>Elimina manuale ordine</h3>
                         <p>Seleziona l'utente per cui vuoi eliminare l'ordine:</p>
                         <div class="d-flex flex-row align-items-center mb-3">
-                          <label class="form-label" for="form3Example3c">
-                            <select type="text" id="User" name="User" v-model="deleteDelegatedUser" class="form-select form-outline flex-fill mb-0" required>
+                          <label class="form-label" for="dDUser">
+                            <select type="text" id="dDUser" name="dDUser" v-model="deleteDelegatedUser" class="form-select form-outline flex-fill mb-0" required>
                             <option selected disabled>Utente</option>
                               <option v-for="x in User">{{ x.id }} - {{ x.name }}</option>
                             </select>Seleziona l'utente</label>
