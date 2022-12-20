@@ -20,26 +20,3 @@
 </section>
 </template>
 
-<style lang="scss">
-@import "~/assets/styles/_bootstrap_sass_assets.scss";
-
-.header{
-    background-color: $blue-400;
-}
-.nav-item:active {
-    border-style: solid;
-}
-.container-fluid {
-    background-image: url('/img/background-image-3.jpg');
-    background-size: 60%;
-}
-.page-enter-active,
-.page-leave-active {
-    transition: all 0.1s;
-}
-.page-enter-from,
-.page-leave-to {
-    opacity: 0;
-    filter: blur(1rem);
-}
-</style>

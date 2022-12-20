@@ -45,7 +45,9 @@ export default defineComponent({
                             <div class="fw-semibold mr-2 text-center d-none d-lg-block">Non sei registrato?</div>
                             <NuxtLink class="btn btn-dark" to="/register">Registrati</NuxtLink> 
                     </div>
-                    <img class="border border-2 border-secondary border-opacity-50 rounded img-fluid" src="/img/splash_screen.jpeg" width="120" height="150" alt="prenotiamo splash screen" />
+                    <NuxtLink to="/">
+                        <img class="border border-2 border-secondary border-opacity-50 rounded img-fluid" src="/img/splash_screen.jpeg" width="120" height="150" alt="prenotiamo splash screen" />
+                    </NuxtLink>
                     <div class="text-center pb-1">
                             <div v-if="!user" class="fw-semibold  mr-2 text-center d-none d-md-block">Non sei registrato?</div>
                             <NuxtLink v-if="!user" class="btn btn-dark" to="/register">Registrati</NuxtLink> 
