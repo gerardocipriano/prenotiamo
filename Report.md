@@ -37,7 +37,7 @@ Dato il monte ore concordato, probabilmente alcuni requisiti non funzionali  ric
 
 Gli elementi costitutivi del problema sono sintetizzati nella seguente figura.
 
-<pre><code>```mermaid
+<pre>```mermaid
 classDiagram
     Prenotiamo <|-- Ristorante
     Prenotiamo <|-- Utente Generico
@@ -58,7 +58,7 @@ classDiagram
         -Effettua invio della lista giornaliera
         -Effettua ordini a nome di altri utenti
     }
-```</code></pre>
+```</pre>
 
 La difficoltà primaria sarà quella di riuscire ad assegnare diversi privilegi (Utente Generico, Utente Ordinante, Ristorante)
 partendo da un set comune di utenti.
@@ -93,167 +93,126 @@ Avendo il database in cloud, il backend non avrà mai problemi nel reperire i da
 Lo schema logico è disponibile nella repository del progetto.
 
 
-## Design dettagliato
+## Design dei componenti
 
-In questa sezione si possono approfondire alcuni elementi del design con
-maggior dettaglio. Mentre ci attendiamo principalmente (o solo)
-interfacce negli schemi UML delle sezioni precedenti, in questa sezione
-è necessario scendere in maggior dettaglio presentando la struttura di
-alcune sottoparti rilevanti dell'applicazione. È molto importante che,
-descrivendo la soluzione ad un problema, quando possibile si mostri che
-non si è re-inventata la ruota ma si è applicato un design pattern noto.
-Che si sia utilizzato (o riconosciuto) o meno un pattern noto, è
-comunque bene definire qual è il problema che si è affrontato, qual è la
-soluzione messa in campo, e quali motivazioni l'hanno spinta. È
-assolutamente inutile, ed è anzi controproducente, descrivere
-classe-per-classe (o peggio ancora metodo-per-metodo) com'è fatto il
-vostro software: è un livello di dettaglio proprio della documentazione
-dell'API (deducibile dalla Javadoc).
+In questa sezione approfondiremo i singoli componenti creati, le funzioni che erogano e le API che sfruttano.
 
-**È necessario che ciascun membro del gruppo abbia una propria sezione
-di design dettagliato, di cui sarà il solo responsabile**.
+### Premessa: DB
 
-Ciascun
-autore dovrà spiegare in modo corretto e giustamente approfondito (non
-troppo in dettaglio, non superficialmente) il proprio contributo. È
-importante focalizzarsi sulle scelte che hanno un impatto positivo sul
-riuso, sull'estensibilità, e sulla chiarezza dell'applicazione.
-Esattamente come nessun ingegnere meccanico presenta un solo foglio con
-l'intero progetto di una vettura di Formula 1, ma molteplici fogli di
-progetto che mostrano a livelli di dettaglio differenti le varie parti
-della vettura e le modalità di connessione fra le parti, così ci
-aspettiamo che voi, futuri ingegneri informatici, ci presentiate prima
-una visione globale del progetto, e via via siate in grado di
-dettagliare le singole parti, scartando i componenti che non interessano
-quella in esame. Per continuare il parallelo con la vettura di Formula
-1, se nei fogli di progetto che mostrano il design delle sospensioni
-anteriori appaiono pezzi che appartengono al volante o al turbo, c'è una
-chiara indicazione di qualche problema di design.
+Il Database è composto da 4 tabelle.
+1. User: lista degli utenti (id, nome, company (ref.company), password, email, role)
+    - user importa la lista delle aziende autorizzate dalla tabella company,
+    - user ha una colonna che indica anche il ruolo che gli utenti avranno all'interno dell'applicazione, sono: Admin, Ristorante, Ordinante e Generico
+2. Company: lista delle aziende autorizzate
+3. Menu: contiene la lista dei piatti disponibili per la prenotazione, se ne registra il nome, il prezzo e il tipo di portata (Antipasto, primo, secondo, pizza)
+4. Daily_order_list: contiene l'insieme degli ordini arrivati. 
+    - ogni entry contiene il riferimento all'id dell'utente, al nome del piatto, alla data dell'ordine e all'azienda dell'utente
 
-Si divida la sezione in sottosezioni, e per ogni aspetto di design che
-si vuole approfondire, si presenti:
+Prenotiamo! usa due utenti di servizio per interagire con il DB.
+Le query di select, vengono eseguite utilizzando un utente che ha solo i permessi di select sulle tabelle.
+Le query che richiedono INSERT, UPDATE e DELETE, sono eseguite invece da un altro utente di servizio, admin.
+Le credenziali sono conservate nel file .env in allegato all'applicazione.
 
-1.  : una breve descrizione in linguaggio naturale del problema che si
-    vuole risolvere, se necessario ci si può aiutare con schemi o
-    immagini;
-2.  : una descrizione della soluzione proposta, analizzando eventuali
-    alternative che sono state prese in considerazione, e che descriva
-    pro e contro della scelta fatta;
-3.  : uno schema UML che aiuti a comprendere la soluzione sopra
-    descritta;
-4.  : se la soluzione è stata realizzata utilizzando uno o più pattern
-    noti, si spieghi come questi sono reificati nel progetto (ad
-    esempio: nel caso di Template Method, qual è il metodo template; nel
-    caso di Strategy, quale interfaccia del progetto rappresenta la
-    strategia, e quali sono le sue implementazioni; nel caso di
-    Decorator, qual è la classe astratta che fa da Decorator e quali
-    sono le sue implementazioni concrete; eccetera);
+### App
 
-La presenza di pattern di progettazione *correttamente utilizzati* è
-valutata molto positivamente. L'uso inappropriato è invece valutato
-negativamente: a tal proposito, si raccomanda di porre particolare
-attenzione all'abuso di Singleton, che, se usato in modo inappropriato,
-è di fatto un anti-pattern.
+Contiene il layout dell'applicazione. Background, Header e Navbar sono definiti qui e sono comuni a tutti gli altri 
+compomenti.
+Nella Navbar è stata definita della logica role-based: i componenti "amministrativi" sono visibili a solo chi ha i 
+permessi per usarli.
 
-### Elementi positivi
+### Index
 
--   Ogni membro del gruppo discute le proprie decisioni di
-    progettazione, ed in particolare le azioni volte ad anticipare
-    possibili cambiamenti futuri (ad esempio l'aggiunta di una nuova
-    funzionalità, o il miglioramento di una esistente).
--   Si mostrano le principali interazioni fra le varie componenti che
-    collaborano alla soluzione di un determinato problema.
--   Si identificano, utilizzano *appropriatamente*, e descrivono diversi
-    design pattern.
--   Ogni membro del gruppo identifica i pattern utilizzati nella sua
-    sottoparte.
--   Si mostrano gli aspetti di design più rilevanti dell'applicazione,
-    mettendo in luce la maniera in cui si è costruita la soluzione ai
-    problemi descritti nell'analisi.
--   Si tralasciano aspetti strettamente implementativi e quelli non
-    rilevanti, non mostrandoli negli schemi UML (ad esempio, campi
-    privati) e non descrivendoli.
--   Ciascun elemento di design identificato presenta una piccola
-    descrizione del problema calato nell'applicazione, uno schema UML
-    che ne mostra la concretizzazione nelle classi del progetto, ed una
-    breve descrizione della motivazione per cui tale soluzione è stata
-    scelta, specialmente se è stato utilizzato un pattern noto. Ad
-    esempio, se si dichiara di aver usato Observer, è necessario
-    specificare chi sia l'observable e chi l'observer; se si usa
-    Template Method, è necessario indicare quale sia il metodo template;
-    se si usa Strategy, è necessario identificare l'interfaccia che
-    rappresenta la strategia; e via dicendo.
+Questo compontente è il più basico di tutti, ci serviva solo una landing page da cui gli utenti potessero poi
+navigare verso i form di Login o di Register. Non viene fatto uso di API o di script.
 
-### Elementi negativi
+### Login
 
--   Il design del modello risulta scorrelato dal problema descritto in
-    analisi.
--   Si tratta in modo prolisso, classe per classe, il software
-    realizzato, o comunque si riduce la sezione ad un mero elenco di
-    quanto fatto.
--   Non si presentano schemi UML esemplificativi.
--   Non si individuano design pattern, o si individuano in modo errato
-    (si spaccia per design pattern qualcosa che non lo è).
--   Si utilizzano design pattern in modo inopportuno.
--   Si producono schemi UML caotici e difficili da leggere, che
-    comprendono inutili elementi di dettaglio.
--   Si presentano schemi UML con classi (nel senso UML del termine) che
-    "galleggiano" nello schema, non connesse, ossia senza relazioni con
-    il resto degli elementi inseriti.
--   Si tratta in modo inutilmente prolisso la divisione in package,
-    elencando ad esempio le classi una per una.
+Form completamente realizzato in bootstrap. Il form di login è usabile solo se l'utente non è già loggato; il
+check viene effettuato dal middleware requireLogout.
+Il form raccoglie mail e password dell'utente e poi usa un fetch con il metodo POST per inviarli all'API di login.
+L'autenticazione è implementata via Json Web Token.
+L'API di login verifica che le credenziali usate siano corrette. Se lo sono, restituisce un cookie con 
+il token di autenticazione al browser dell'utente.
 
-### Esempio minimale (e quindi parziale) di sezione di progetto con UML ben realizzati
+### Register
 
-#### Personalità intercambiabili
+Discorso simile al compomente di Login. Il form di register è usabile solo se l'utente non è già loggato; il
+check viene effettuato dal middleware requireLogout. 
+Il form raccoglie nome, mail,  password e azienda (selezionabile in un elenco di aziende autorizzate) dell'utente e poi usa un fetch 
+con il metodo POST per inviarli all'API di register.
+L'elenco delle aziende viene fetchato dal DB tramite apposita API che esegue una select sul DB.
+
+### Menu
+
+Il compomente menù è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Il compomente sfrutta una query che interroga il DB, recuperando tramite select tutte le portate registrate nella tabella User.
+Le portate vengono stampate in card. Ogni card ha un bottone. Se l'utente ci preme sopra, richiama la funzione sendOrder,
+la quale va a registrare la portata scelta all'interno della tabella degli ordini (daily_order_list).
+
+### Prenota
+
+Il compomente prenota è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Questa pagina contiene una tabella popolata dalle entry della table daily_order_list.
+L' API fa una query richiedendo solo gli ordini del giorno.
+Alla fine della tabella, c'è un bottone che chiama la funzione sendMail().
+La funzione sendMail() invia all'API /prenota/mail tramite post l'elenco degli ordini.
+L'API è realizzata con nodemail. Compone il testo del messaggio diretto al ristorante utilizzando il body della richiesta.
+La funzione sendMail è utilizzabile solo da utenti con ruolo "Ordinante", viene eseguito un check per verificare il ruolo
+dalla funzione requireOrdinante (contenuta nell'API utils/auth).
+
+### Delega
+
+Il compomente delega è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Sul compomente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "Ordinante" possono vedere il tasto nella navbar o
+navigare il componente (il double check viene effettuato dal middleware require-ordinante).
+La pagina offre due form
+ 1. Il primo consente l'aggiunta manuale di un ordine a nome di un altro utente già registrato nel sistema.
+    Vengono offerte due select, nella prima si seleziona l'utente, nella seconda il piatto da ordinare.
+    La prima select viene realizzata da un API /delega/user che restituisce id e nome degli utenti registrati nel sistema.
+    Questa API è utilizzabile solo da utenti con il ruolo di "Ordinante".
+2. Il secondo form consente l'eliminazione di un ordine creato per errore.
+   Offre la selezione di tutti gli utenti registrati nel sistema. La funzione che viene attivata premendo il bottone richiama un'API che prende in ingresso
+   l'id dell'utente selezionato e esegue una query di DELETE usando come parametro ID utente e data odierna.
+
+### Admin
+
+Il compomente Admin è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Sul compomente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "Admin" possono vedere il tasto nella navbar o
+navigare il componente (il double check viene effettuato dal middleware require-admin).
+La pagina offre la possibilità ad un amministratore di sistema, di configurare agevolmente i ruoli degli utenti registrati.
+Un API apposita recupera la lista degli utenti, che vengono mostrati in una select.
+In un' altra select si sceglie il nuovo ruolo dell'utente.
+La funzione richiamata alla pressione del bottone, passa alla query l'id dell'utente scelto e il nuovo ruolo.
+L'API effettua una query di UPDATE.
+
+### Inserimento
 
 
-
-##### Problema
-
-
-
-##### Soluzione
-
-
+Il compomente Inserimento è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Sul compomente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "ristorante" possono vedere il tasto nella navbar o
+navigare il componente (il double check viene effettuato dal middleware require-ristorante).
+Viene offerta un interfaccia per eliminare o aggiungere nuove portate sulla tabella menu.
 
 # Sviluppo
 
 ## Testing automatizzato
 
-Il testing avviene 
+Il testing avviene continuamente attraverso il comando npm run dev.
+Anche dopo il commit, si verifica che la versione demo live su netlify riesca a compilare correttamente e a 
+visualizzare le nuove features.
 
-### Elementi positivi
-
--   Si descrivono molto brevemente i componenti che si è deciso di
-    sottoporre a test automatizzato.
--   Si utilizzano suite specifiche (e.g. JUnit) per il testing
-    automatico.
-
-### Elementi negativi {#elementi-negativi-4 .unnumbered}
-
--   Non si realizza alcun test automatico.
--   La non presenza di testing viene aggravata dall'adduzione di
-    motivazioni non valide. Ad esempio, si scrive che l'interfaccia
-    grafica non è testata automaticamente perché è *impossibile*
-    farlo (testare in modo automatico le interfacce grafiche è possibile, si veda, come esempio,
-    [TestFX](https://github.com/TestFX/TestFX);
-    semplicemente, nel corso non c'è modo e tempo di introdurvi questo
-    livello di complessità).
--   Si descrive un testing di tipo manuale in maniera prolissa.
--   Si descrivono test effettuati manualmente che sarebbero potuti
-    essere automatizzati, ad esempio scrivendo che si è usata
-    l'applicazione manualmente.
--   Si descrivono test non presenti nei sorgenti del progetto.
--   I test, quando eseguiti, falliscono.
 
 ## Note di sviluppo
 
-Placeholder
+Per mancanza di tempo, alcuni requisiti non funzionali non sono stati implementati in questa versione del software.
+Il codice HTML è stato correttamente validato attraverso l'estensione SiteImprove Site Checker.
 
 # Commenti finali
 
-Placeholder
+Tutti i requisiti funzionali richiesti dal committente sono stati implementati e da test funzionano correttamente.
+Il tempo di sviluppo ha richiesto molto più tempo di quanto preventivato.
+Ci siamo concentrati sull'offrire il maggior numero di funzionalità richieste dagli utenti, tralasciando qualche elemento di stile o di coerenza.
+Il risultato finale rispecchia quello che era il nostro obbiettivo iniziale.
 
 
 # Guida utente
