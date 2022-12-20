@@ -1,10 +1,11 @@
 import { createPrivilegedConnection } from "~/server/utils/db"
-import { decodingUser, requireLogin } from "../../utils/auth"
+import { decodingUser, requireLogin, requireOrdinante } from "../../utils/auth"
 
 export default defineEventHandler(async function(event) {
 
     const user = decodingUser(event)
     requireLogin(user)
+    requireOrdinante(user)
 
     const date = new Date()
     const dataordine = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0")

@@ -1,7 +1,10 @@
 <script lang="ts">
 import { Piatto, User} from "../types"
-import {ref} from 'vue';
-const dish = ref('');
+
+definePageMeta({
+  middleware: ["require-ordinante"]
+})
+
 
 export default defineComponent({
   data() {
@@ -31,7 +34,8 @@ export default defineComponent({
           note: this.delegatedNote,
         }
       })
-      console.log(this.delegatedUser[0])
+      .then(() => window.location.href = "/delega")
+      .catch((e) => alert(e))
     },
     deleteOrderOnBehalfOf() {
       $fetch("/api/delega/delete", {
@@ -40,6 +44,8 @@ export default defineComponent({
           user_id: this.deleteDelegatedUser[0],
         }
       })
+      .then(() => window.location.href = "/delega")
+      .catch((e) => alert(e))
     },
   },
   mounted() {

@@ -15,7 +15,7 @@ export default defineComponent({
   },
   methods: {
     async getUser() {
-      const user = await $fetch("/api/auth/profilo")
+      const user = await $fetch("/api/auth/session")
       this.user = user
     },
     async logout() {
@@ -42,12 +42,12 @@ export default defineComponent({
                 <div class="d-flex align-items-center justify-content-between p-3">
                     <div class="invisible">
                             <div class="fw-semibold mr-2 text-center d-none d-lg-block">Non sei registrato?</div>
-                            <NuxtLink class="btn btn-dark" to="/register">Sign Up</NuxtLink> 
+                            <NuxtLink class="btn btn-dark" to="/register">Registrati</NuxtLink> 
                     </div>
                     <img class="border border-2 border-secondary border-opacity-50 rounded img-fluid" src="/img/splash_screen.jpeg" width="120" height="150" alt="prenotiamo splash screen" />
                     <div class="text-center pb-1">
                             <div v-if="!user" class="fw-semibold  mr-2 text-center d-none d-md-block">Non sei registrato?</div>
-                            <NuxtLink v-if="!user" class="btn btn-dark" to="/register">Sign Up</NuxtLink> 
+                            <NuxtLink v-if="!user" class="btn btn-dark" to="/register">Registrati</NuxtLink> 
                             <li v-else class="list-group-item"><a href="#" class="btn btn-dark" @click.prevent="logout">Logout</a></li>
                     </div>
                 </div>
@@ -59,20 +59,20 @@ export default defineComponent({
                             <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
                                 <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/">Home</NuxtLink>
                             </li>
-                            <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
-                                <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/menu">Menu</NuxtLink>
+                            <li v-if="user" class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
+                                <NuxtLink v-if="user" class="nav-link text-dark text-decoration-none fw-semibold" to="/menu">Menu</NuxtLink>
                             </li>
-                            <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
-                                <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/prenota">Prenota</NuxtLink>
+                            <li v-if="user" class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
+                                <NuxtLink v-if="user" class="nav-link text-dark text-decoration-none fw-semibold" to="/prenota">Prenota</NuxtLink>
                             </li>
-                            <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
-                                <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/storico">Storico</NuxtLink>
+                            <li v-if="user" class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
+                                <NuxtLink v-if="user" class="nav-link text-dark text-decoration-none fw-semibold" to="/storico">Storico</NuxtLink>
                             </li>
-                            <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
-                                <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/delega">Delega</NuxtLink>
+                            <li v-if="user?.role=='Ordinante'" class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
+                                <NuxtLink v-if="user?.role=='Ordinante'" class="nav-link text-dark text-decoration-none fw-semibold" to="/delega">Delega</NuxtLink>
                             </li>
-                            <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
-                                <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/aggiungi">Aggiungi</NuxtLink>
+                            <li v-if="user?.role=='Ristorante'"  class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
+                                <NuxtLink v-if="user?.role=='Ristorante'" class="nav-link text-dark text-decoration-none fw-semibold" to="/aggiungi">Inserimento</NuxtLink>
                             </li>
                         </ul>
                     </nav>

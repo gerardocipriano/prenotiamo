@@ -3,6 +3,7 @@ import { Piatto } from "../types"
 import {ref} from 'vue';
 const dish = ref('');
 
+
 export default defineComponent({
   data() {
     return {
@@ -39,6 +40,8 @@ export default defineComponent({
           note: this.note,
         }
       })
+      .then(() => window.location.href = "/prenota")
+      .catch((e) => alert(e))
     },
   },
   mounted() {

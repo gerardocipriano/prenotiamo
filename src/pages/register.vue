@@ -1,7 +1,12 @@
 <script lang="ts">
 import { Company } from "../types"
 
+definePageMeta({
+  middleware: ["require-logout"]
+})
+
 export default defineComponent({
+  
 
   
   data() {

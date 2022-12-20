@@ -1,5 +1,5 @@
 import transport from "~/server/utils/mail"
-import { decodingUser, requireLogin } from "~/server/utils/auth"
+import { decodingUser, requireLogin, requireOrdinante } from "~/server/utils/auth"
 import { DailyOrder } from "~/types"
 
 transport.verify(function(error, success) {
@@ -17,6 +17,7 @@ export default defineEventHandler(async function(event) {
     
     const user = decodingUser(event)
     requireLogin(user)
+    requireOrdinante(user)
     let html: string = `<!doctype html><html lang="it"><h1 style="font-family: Arial, Helvetica, sans-serif">Buongiorno, 
     Di seguito le prenotazioni del giorno:</h1>
     <section class="mt-1">
@@ -30,7 +31,6 @@ export default defineEventHandler(async function(event) {
         </tr>
       </thead>`
     let order_tdst: DailyOrder[] = await readBody(event)
-    console.log(order_tdst)
 
     order_tdst.forEach( (x) => {
       html += `<tr style="tr:hover"><td style="padding: 8px;font-family: Arial, Helvetica, sans-serif">`+x.name+`</td>`
@@ -41,8 +41,6 @@ export default defineEventHandler(async function(event) {
 
   html+=`</html>`
 
-
-    console.log(html)
     let mailOptions = {
     
         to: 'user1@example.com',

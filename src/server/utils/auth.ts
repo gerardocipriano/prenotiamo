@@ -48,4 +48,14 @@ export function requireLogout(utente: User | null) {
   }
 }
 
+export function requireOrdinante(utente: User | null) {
+  if (utente?.role != "Ordinante") {
+    throw createError({ statusCode: 401, statusMessage: "Unauthorized" })
+  }
+}
 
+export function requireAdmin(utente: User | null) {
+  if (utente?.role != "Admin") {
+    throw createError({ statusCode: 401, statusMessage: "Unauthorized" })
+  }
+}

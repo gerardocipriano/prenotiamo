@@ -1,5 +1,10 @@
 <script lang="ts">
 import { DailyOrder } from "../types"
+import { User } from "~/types"
+
+definePageMeta({
+  middleware: ["require-login"]
+})
 
 
 const date = new Date()
@@ -12,7 +17,7 @@ export default defineComponent({
     return {
       DailyOrder: [] as DailyOrder[],
       day,
-
+      user: null as User | null
     }
   },
   methods: {
@@ -55,7 +60,7 @@ export default defineComponent({
       </tr>
     </table>
   </section>
-  <button type="button" @click="sendMail()"  class="btn btn-dark btn-rounded">Prenota</button>
+  <button type="button" v-if="user?.role=='Ordinante'" @click="sendMail()"  class="btn btn-dark btn-rounded">Prenota</button>
 </div>
 </template>
 
