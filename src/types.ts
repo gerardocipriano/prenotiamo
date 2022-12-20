@@ -32,3 +32,10 @@ export interface User {
   company: string
   role: string
 }
+
+export enum Role {
+  Generico,
+  Ordinante,
+  Ristorante,
+  Admin,
+}

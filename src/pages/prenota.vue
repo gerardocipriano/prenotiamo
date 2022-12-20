@@ -17,7 +17,6 @@ export default defineComponent({
     return {
       DailyOrder: [] as DailyOrder[],
       day,
-      user: null as User | null
     }
   },
   methods: {
@@ -29,7 +28,6 @@ export default defineComponent({
         method: "POST",
         body: this.DailyOrder
       });
-      console.log(this.DailyOrder)
     },
   },
   mounted() {
@@ -60,7 +58,7 @@ export default defineComponent({
       </tr>
     </table>
   </section>
-  <button type="button" v-if="user?.role=='Ordinante'" @click="sendMail()"  class="btn btn-dark btn-rounded">Prenota</button>
+  <button type="button"  @click="sendMail()"  class="btn btn-dark btn-rounded">Prenota</button>
 </div>
 </template>
 

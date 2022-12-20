@@ -2,7 +2,7 @@
 import { Piatto, User} from "../types"
 
 definePageMeta({
-  middleware: ["require-ordinante"]
+  middleware: ["require-login","require-ordinante"]
 })
 
 

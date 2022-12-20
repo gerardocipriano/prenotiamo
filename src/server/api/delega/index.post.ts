@@ -18,5 +18,5 @@ export default defineEventHandler(async function(event) {
         VALUES (?, ?, ?, ?)`,
        [dataordine, user_id, dish, note]
     )
-    return { message: "Order Submitted as Successfully" }
+    return { message: "Order Submitted  Successfully" }
 })

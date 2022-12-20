@@ -3,7 +3,8 @@ import { decodingUser, requireAdmin, requireLogin, requireOrdinante } from "../.
 
 export default defineEventHandler(async function(event) {
   const user = decodingUser(event)
-  requireOrdinante(user)
+  requireLogin(user)
+  requireAdmin(user)
 
   const connection = await createConnection()
   const [results] = await connection.execute(

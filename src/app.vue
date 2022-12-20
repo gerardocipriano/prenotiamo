@@ -74,6 +74,9 @@ export default defineComponent({
                             <li v-if="user?.role=='Ristorante'"  class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
                                 <NuxtLink v-if="user?.role=='Ristorante'" class="nav-link text-dark text-decoration-none fw-semibold" to="/inserimento">Inserimento</NuxtLink>
                             </li>
+                            <li v-if="user?.role=='Admin'"  class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
+                                <NuxtLink v-if="user?.role=='Admin'" class="nav-link text-dark text-decoration-none fw-semibold" to="/admin">Administration</NuxtLink>
+                            </li>
                         </ul>
                     </nav>
                     <main class="col-xl-11">
