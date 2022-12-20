@@ -1,12 +1,16 @@
 <script lang="ts">
-import { History } from "~/types"
+import { History, User } from "~/types"
 
 definePageMeta({
   middleware: ["require-login"]
 })
 
 export default defineComponent({
-  
+  setup() {
+    return {
+      user: inject("user") as User | null
+    }
+  },
   data() {
     return {
       Storico: [] as History[]
@@ -14,7 +18,7 @@ export default defineComponent({
   },
   methods: {
     getHistory() {
-      $fetch("/api/storico/").then(response => this.Storico = response as History[])
+      $fetch("/api/storico/" + this.user?.id).then(response => this.Storico = response as History[])
     }
   },
   mounted() {
