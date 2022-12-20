@@ -1,7 +1,10 @@
 <script lang="ts">
 import { Piatto } from "../types"
-import {ref} from 'vue';
-const dish = ref('');
+
+definePageMeta({
+  middleware: ["require-ristorante"]
+})
+
 
 export default defineComponent({
   data() {
@@ -10,19 +13,36 @@ export default defineComponent({
       platePrice: "",
       plateSelect: "",
       plateDelete: "",
-      Courses: [],
-      foodName: []
+      Courses: [] as Piatto[],
+      Plates: [] as Piatto[]
     }
   },
   methods: {
     getFood() {
-      
+        $fetch("/api/inserimento/course").then(response => this.Courses = response as Piatto[])
+        $fetch("/api/inserimento/food").then(response => this.Plates = response as Piatto[])
     },
     addFood() {
-     
+      $fetch("/api/inserimento/", {
+        method: "POST",
+        body: {
+            plateName: this.plateName,
+            platePrice: this.platePrice,
+            course: this.plateSelect,
+            }
+      })
+      .then(() => window.location.href = "/inserimento")
+      .catch((e) => alert(e))
     },
     deleteFood() {
-     
+      $fetch("/api/inserimento/delete", {
+        method: "POST",
+        body: {
+          plateDelete: this.plateDelete,
+        }
+      })
+      .then(() => window.location.href = "/inserimento")
+      .catch((e) => alert(e))
     },
   },
   mounted() {
@@ -43,19 +63,19 @@ export default defineComponent({
                                 <div class="row justify-content-center">
                                     <div class="col-lg-4">
                                         <label class="form-label" for="form3Example3c">
-                                            <input type="text" id="note" name="note" v-model="plateName" class="form-control"  />Nome piatto
+                                            <input type="text" id="piatto" name="piatto" v-model="plateName" class="form-control"  />Nome piatto
                                         </label>
                                     </div>
                                     <div class="col-lg-4">
                                         <label class="form-label" for="form3Example3c">
-                                            <input type="text" id="note" name="note" v-model="platePrice" class="form-control"  />Prezzo
+                                            <input type="text" id="prezzo" name="prezzo" v-model="platePrice" class="form-control"  />Prezzo
                                         </label>
                                     </div>
                                     <div class="col-lg-4">
                                         <label class="form-label" for="form3Example3c">
-                                            <select type="text" id="User" name="User" v-model="plateSelect" class="form-select form-outline flex-fill mb-0" required>
+                                            <select type="text" id="portata" name="portata" v-model="plateSelect" class="form-select form-outline flex-fill mb-0" required>
                                                 <option selected disabled>Portata</option>
-                                                <option v-for="x in Courses">{{ x }}</option>
+                                                <option v-for="x in Courses">{{ x.course }}</option>
                                             </select>Seleziona portata
                                         </label>
                                     </div>
@@ -71,9 +91,9 @@ export default defineComponent({
                                 <div class="row justify-content-center">
                                     <div class="col">
                                         <label class="form-label" for="form3Example3c">
-                                            <select type="text" id="User" name="User" v-model="plateDelete" class="form-select form-outline flex-fill mb-0" required>
+                                            <select type="text" id="piatto" name="piatto" v-model="plateDelete" class="form-select form-outline flex-fill mb-0" required>
                                                 <option selected disabled>Piatto</option>
-                                                <option v-for="x in foodName">{{ x }}</option>
+                                                <option v-for="x in Plates">{{ x.food_name }}</option>
                                             </select>Seleziona piatto
                                         </label>
                                     </div>

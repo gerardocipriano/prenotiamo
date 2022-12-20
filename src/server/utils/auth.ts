@@ -59,3 +59,9 @@ export function requireAdmin(utente: User | null) {
     throw createError({ statusCode: 401, statusMessage: "Unauthorized" })
   }
 }
+
+export function requireRistorante(utente: User | null) {
+  if (utente?.role != "Ristorante") {
+    throw createError({ statusCode: 401, statusMessage: "Unauthorized" })
+  }
+}
