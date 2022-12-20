@@ -55,7 +55,7 @@ export default defineComponent({
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register Here</p>
+                <h1 class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register Here</h1>
 
                 <form @submit.prevent="onRegisterSubmit" class="mx-1 mx-md-3" >
 
@@ -63,19 +63,20 @@ export default defineComponent({
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <input type="text" id="register-name" name="register-name" v-model="registerName" class="form-control" required/>
-                      <label class="form-label" for="form3Example1c">Your Name</label>
+                      <label class="form-label" for="register-name">Your Name</label>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-3">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <input type="email" id="register-mail" name="register-mail" v-model="registerEmail" class="form-control" required />
-                      <label class="form-label" for="form3Example3c">Your Email</label>
+                      <label class="form-label" for="register-mail">Your Email</label>
                     </div>
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-3">
                     <select type="text" id="register-company" name="register-company" v-model="registerCompany" class="form-select form-outline flex-fill mb-0" required>
+                      <label class="form-label" for="register-company">Company</label>
                       <option selected disabled>Company</option>
                         <option v-for="x in Company">{{ x.name }}</option>
                     </select>
@@ -85,13 +86,13 @@ export default defineComponent({
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <input input type="password" id="register-password" name="register-password" v-model="registerPassword"  class="form-control" required/>
-                      <label class="form-label" for="form3Example4c">Password</label>
+                      <label class="form-label" for="register-password">Password</label>
                     </div>
                   </div>
 
                   <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" required />
-                    <label class="form-check-label" for="form2Example3">
+                    <input class="form-check-input me-2" type="checkbox" value="termsofservice" id="termsofservice" required />
+                    <label class="form-check-label" for="termsofservice">
                       I agree all statements in <nuxt-link to="/termsofservice">Terms of service</nuxt-link>
                     </label>
                   </div>

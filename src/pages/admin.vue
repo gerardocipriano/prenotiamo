@@ -37,6 +37,7 @@ export default defineComponent({
 </script>
 
 <template>
+
     <section class="vh-100" style="background-color: #eee;">
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -49,7 +50,7 @@ export default defineComponent({
                         <p>Seleziona l'utente, poi il nuovo ruolo</p>
 
                         <div class="d-flex flex-row align-items-center mb-3">
-                          <label class="form-label" for="form3Example3c">
+                          <label class="form-label" for="User">
                             <select type="text" id="User" name="User" v-model="promoteUser" class="form-select form-outline flex-fill mb-0" required>
                             <option selected disabled>Utente</option>
                               <option v-for="x in User">{{ x.id }} - {{ x.name }}</option>
@@ -57,7 +58,7 @@ export default defineComponent({
                         </div>
 
                         <div class="d-flex flex-row align-items-center mb-3">
-                          <label class="form-label" for="form3Example3c"><select type="text" id="User" name="User" v-model="promoteRole" class="form-select form-outline flex-fill mb-0" required>
+                          <label  class="form-label" for="Role"><select type="text" id="Role" name="Role" v-model="promoteRole" class="form-select form-outline flex-fill mb-0" required>
                             <option selected disabled>Ruolo</option>
                               <option >Admin</option>
                               <option >Ordinante</option>
@@ -76,5 +77,6 @@ export default defineComponent({
           </div>
         </div>
     </section>
-    </template>
+
+</template>
     
