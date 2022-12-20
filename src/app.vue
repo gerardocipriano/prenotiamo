@@ -56,8 +56,8 @@ export default defineComponent({
                 <div class="row mt-3">
                     <nav class="col-xl-1 mt-1 mb-4">
                         <ul class="nav nav-fill flex-xl-column flex-row text-center justify-content-around">
-                            <li class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
-                                <NuxtLink class="nav-link text-dark text-decoration-none fw-semibold" to="/">Home</NuxtLink>
+                            <li v-if="!user" class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
+                                <NuxtLink v-if="!user" class="nav-link text-dark text-decoration-none fw-semibold" to="/login">Login</NuxtLink>
                             </li>
                             <li v-if="user" class="nav-item border-3 border-bottom border-primary border-opacity-50 rounded-pill">
                                 <NuxtLink v-if="user" class="nav-link text-dark text-decoration-none fw-semibold" to="/menu">Menu</NuxtLink>
