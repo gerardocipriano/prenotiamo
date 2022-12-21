@@ -36,21 +36,23 @@ export default defineComponent({
   <div class="container text-center">
     <h1>Storico</h1>
     <section class="mt-1">
-      <table id="table" class="table table-striped">
-        <thead class="black white-text">
+      <table id="table" class="table table-striped table-hover">
+        <thead>
           <tr>
               <th id="date">Data</th>
               <th id="dish">Piatto</th>
               <th id="note">Note</th>
           </tr>
         </thead>
-        <tr v-for="order in Storico">
-          <td>{{ order.date }}</td>
-          <td>{{ order.food_name }}</td>
-          <td>{{ order.note }}</td>
-        </tr>
+        <tbody class="table-group-divider">
+          <tr v-for="order in Storico">
+            <td>{{ order.day}}/{{ order.month }}/{{order.year}}</td>
+            <td>{{ order.food_name }}</td>
+            <td>{{ order.note }}</td>
+          </tr>
+        </tbody>  
       </table>
     </section>
   </div>
-  </template>
+</template>
   

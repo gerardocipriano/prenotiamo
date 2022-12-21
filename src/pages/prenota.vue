@@ -41,8 +41,8 @@ export default defineComponent({
 <div class="container text-center">
   <h1>Ordini del giorno {{ day }}</h1>
   <section class="mt-1">
-    <table id="table" class="table table-striped">
-      <thead class="black white-text">
+    <table id="table" class="table table-striped table-hover">
+      <thead>
         <tr>
             <th id="name">Nome</th>
             <th id="company">Azienda</th>
@@ -50,12 +50,14 @@ export default defineComponent({
             <th id="note">Note</th>
         </tr>
       </thead>
-      <tr v-for="orders in DailyOrder">
-        <td>{{ orders.name }}</td>
-        <td>{{ orders.company }}</td>
-        <td>{{ orders.food_name }}</td>
-        <td>{{ orders.note }}</td>
-      </tr>
+      <tbody class="table-group-divider">
+        <tr v-for="orders in DailyOrder">
+          <td>{{ orders.name }}</td>
+          <td>{{ orders.company }}</td>
+          <td>{{ orders.food_name }}</td>
+          <td>{{ orders.note }}</td>
+        </tr>
+      </tbody> 
     </table>
   </section>
   <button type="button"  @click="sendMail()"  class="btn btn-dark btn-rounded">Prenota</button>

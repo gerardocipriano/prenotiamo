@@ -17,7 +17,9 @@ export interface Piatto {
     food_name: string
     price: number
     note: string
-    date: number
+    day: number
+    month: number
+    year: number
   }
 
   export interface Company {

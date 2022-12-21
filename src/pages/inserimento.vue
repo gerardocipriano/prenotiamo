@@ -31,6 +31,8 @@ export default defineComponent({
             course: this.plateSelect,
             }
       })
+      .then(() => window.location.href = "/inserimento")
+      .catch((e) => alert(e))
 
     },
     deleteFood() {
@@ -40,6 +42,8 @@ export default defineComponent({
           plateDelete: this.plateDelete,
         }
       })
+      .then(() => window.location.href = "/inserimento")
+      .catch((e) => alert(e))
     },
   },
   mounted() {
