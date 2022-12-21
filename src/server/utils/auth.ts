@@ -12,7 +12,7 @@ export function codingUser(event: H3Event, user: any) {
   setCookie(event, cookieName, accessToken, {
     httpOnly: false,
     sameSite: true,
-    // secure: true
+    secure: true
   })
 }
 
