@@ -1,11 +1,13 @@
 <script  lang="ts">
-import { History } from "../../types"
+import { History, User } from "../../types"
 
-definePageMeta({
-  middleware: ["require-login", "require-ristorante"]
-})
 
 export default defineComponent({
+  setup() {
+    return {
+      user: inject("user") as User | null
+    }
+  },
   data() {
     return {
       Storico: [] as History[]
@@ -13,7 +15,9 @@ export default defineComponent({
   },
   methods: {
     getHistory() {
-      $fetch("/api/storico/" + this.$route.params.id).then(response => this.Storico = response as History[])
+      if(this.user?.role == "Ristorante"){
+        $fetch("/api/storico/" + this.$route.params.id).then(response => this.Storico = response as History[])
+      }
     }
   },
   mounted() {
