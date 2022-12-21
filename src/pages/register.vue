@@ -75,7 +75,7 @@ export default defineComponent({
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-3">
-                    <select type="text" id="register-company" name="register-company" v-model="registerCompany" class="form-select form-outline flex-fill mb-0" required>
+                    <select type="text" id="register-company" name="register-company" v-model="registerCompany" class="form-select form-outline flex-fill mb-0 ms-3" required>
                       <label class="form-label" for="register-company">Company</label>
                       <option selected disabled>Company</option>
                         <option v-for="x in Company">{{ x.name }}</option>

@@ -39,7 +39,7 @@ export default defineComponent({
 
 <template>
 <div class="container text-center">
-  <h1>Ordini del giorno {{ day }}</h1>
+  <h1>Ordini del {{ day }}</h1>
   <section class="mt-1">
     <table id="table" class="table table-striped table-hover">
       <thead>
