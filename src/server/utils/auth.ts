@@ -10,7 +10,7 @@ export function codingUser(event: H3Event, user: any) {
   const accessToken = jwt.sign(user, JwtSecret, { expiresIn: "1 day" })
   // Imposta l'access token come cookie
   setCookie(event, cookieName, accessToken, {
-    httpOnly: true,
+    httpOnly: false,
     sameSite: true,
     // secure: true
   })
