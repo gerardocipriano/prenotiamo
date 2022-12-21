@@ -17,7 +17,8 @@ export default ({
     },
     app: {
         pageTransition: { name: 'page', mode: 'out-in' }
-      }
+      },
+    ssr: false
 })
 
 // generating the html page fot 404 code
