@@ -114,8 +114,10 @@ Le credenziali sono conservate nel file .env in allegato all'applicazione.
 
 Contiene il layout dell'applicazione. Background, Header e Navbar sono definiti qui e sono comuni a tutti gli altri 
 compomenti.
-Nella Navbar è stata definita della logica role-based: i componenti "amministrativi" sono visibili a solo chi ha i 
-permessi per usarli.
+Non tutti i pulsanti del navbar sono visibili a tutti gli utenti.
+Ogni tasto è "protetto" da v-if. I v-if verificano la condizione che l'utente attualmente loggato sia autorizzato a navigare quel componente:
+Il tasto "Admin" è visibile solo agli utenti con ruolo di Admin; analogamente "Delega" agli utenti con ruolo "Ordinante" e "Inserimento" agli utenti con ruolo "Ristorante".
+Inoltre la maggior parte dei collegamenti non è visibile se non si è loggati nel sistema: Login, Register, / e Termsofservice sono gli unici componenti consultabili senza essere loggati.
 
 ### Index
 
@@ -187,7 +189,7 @@ La pagina offre due form
 
 ### Admin
 
-Il componente Admin è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Non richiesto dal cliente ma implementato comunque per garantire una gestibilità maggiore dell'applicazione. Il componente Admin è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
 Sul componente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "Admin" possono vedere il tasto nella navbar o
 navigare il componente (il double check viene effettuato dal middleware require-admin).
 La pagina offre la possibilità ad un amministratore di sistema, di configurare agevolmente i ruoli degli utenti registrati.
