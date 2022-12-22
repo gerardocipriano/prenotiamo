@@ -14,7 +14,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/gerardocipriano/isw">
+  <a href="https://github.com/gerardocipriano/prenotiamo">
     <img src="src/public/img/logo.png" alt="Logo" width="200">
   </a>
 
@@ -63,7 +63,7 @@
 ## About The Project
 <br />
 <div align="center">
-  <a href="https://github.com/gerardocipriano/isw">
+  <a href="https://github.com/gerardocipriano/prenotiamo">
     <img src="src/public/img/splash_screen.jpeg" alt="Logo" width="200">
   </a>
   <p align="center">
@@ -83,16 +83,13 @@ Every users order are stored in a separate list, to keep historical data.
 
 1. Clone the repo
    ```
-   git clone https://github.com/gerardocipriano/isw.git
+   git clone https://github.com/gerardocipriano/prenotiamo.git
    ```
+2. Fill .envtemplate with your custom variables. Rename it in .env
 3. build it:
    ```
    npm i
    npm run dev
-   ```
-Alternatively you could just download the latest release and run it with
-   ```
-   
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -101,34 +98,71 @@ Alternatively you could just download the latest release and run it with
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-The usage of the website is quite intuitive and quite similar to others take away web application.
-Once accessed to the website, the user is prompted to login.
+The user guide is written in the language used by the end users. Instructions for other languages will be included in future releases of the project.
+
+La pagina iniziale fornisce alcune informazioni principali sull'uso dell'applicazione. Alcuni concetti verranno ribaditi anche in questa guida.
+
+### Utenti Generici
+Se non si è ancora in possesso di un utente, cliccare su Registrati.
+Al termine della registrazione o del login, sarà possibile visualizzare i pulsanti Menu, Prenota e Storico.
+
+Dalla pagina Menù è possibile selezionare il piatto che si intende prenotare.
+ATTENZIONE! Le note sono da inserire prima di premere sul tasto "Aggiungi".
+Se non puoi prenotare, chiedi ad un utente delegato del tuo ufficio di fare l'ordine al posto tuo.
+
+
 <div align="center">
-  <a href="https://github.com/gerardocipriano/isw">
+  <a href="https://github.com/gerardocipriano/prenotiamo">
     <img src="images/menu.png" alt="Menu" height="500">
   </a>
 </div>
-From the "Menù" page, the user can choice from the restaurant menù.
+
+Dalla pagina prenota è possibile visualizzare l'elenco di tutti gli ordini pervenuti nella mattinata.
+Se hai inviato l'ordine per errore, chiedi ad un utente delegato del tuo ufficio di rimuoverlo.
+ATTENZIONE! Il tasto prenota è riservato agli utenti autorizzati. Serve ad inviare l'elenco alla mensa. 
+Se sei un utente autorizzato, ricorda che una volta premuto, non sarà più possibile modificare dall'App gli ordini.
+
+
 <div align="center">
-  <a href="https://github.com/gerardocipriano/isw">
-    <img src="images/menu.png" alt="Menu" height="500">
+  <a href="https://github.com/gerardocipriano/prenotiamo">
+    <img src="images/prenota.png" alt="Prenota" height="500">
   </a>
 </div>
-DESCRIVI PAGINA STORICO ORDINI UTENTE
+
+Dalla pagina storico puoi vedere tutti gli ordini che hai inviato da quando ti sei registrato.
+
 <div align="center">
-  <a href="https://github.com/gerardocipriano/isw">
-    <img src="images/history.png" alt="History" height="500">
+  <a href="https://github.com/gerardocipriano/prenotiamo">
+    <img src="images/storico.png" alt="Storico" height="500">
   </a>
 </div>
-DESCRIVI PAGINA INVIO ORDINE
+
+### Utenti Ordinanti
+
+Se sei autorizzato ad inviare ordini, oltre ai tasti citati qui sopra, puoi vedere nella barra di navigazione anche il tasto delega.
+L'interfaccia ti offre la possibilità, nella prima parte, di inserire un ordine a nome di un altro collega; nella seconda parte puoi eliminare l'ordine di un collega selezionando il suo nome e poi cliccando sul tasto.
+Quest'ultima azione è irreversibile.
+
 <div align="center">
-  <a href="https://github.com/gerardocipriano/isw">
-    <img src="images/place_order.png" alt="Submit order page" height="500">
+  <a href="https://github.com/gerardocipriano/prenotiamo">
+    <img src="images/delega.png" alt="delega page" height="500">
   </a>
 </div>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Utente Ristorante
 
+Prenotiamo! mette a disposizione per la mensa un' interfaccia pratica e intuitiva per l'inserimento e/o la rimozione di piatti dal menù.
+Nella prima parte puoi inserire il nuovo piatto, inserendo nome, prezzo e tipo di portata (antipasto, primo, secondo o pizza).
+Nella seconda parte, puoi rimuovere piatti dal menù. Usare questa funzione solo se si intendere rimuovere <b>definitivamente</b> dal menù il piatto (da non usare  in caso di temporanea mancanza).
+La funzionalità Aggiungi immagine è ancora in fase di sviluppo, verrà resa disponibili nelle future versioni dell'applicazione.
+
+<div align="center">
+  <a href="https://github.com/gerardocipriano/prenotiamo">
+    <img src="images/inserimento.png" alt="Submit new dish page" height="500">
+  </a>
+</div>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -136,13 +170,13 @@ DESCRIVI PAGINA INVIO ORDINE
 Mandatory features:
 - [x] Design Mockup
 - [x] Build DB & SQL instructions
-- [ ] Register & Login 
-- [ ] Write CSS
+- [x] Register & Login 
+- [x] Write CSS
 - [x] Render menù in the "Menù" page
 - [x] Users can view their past orders
-- [ ] Users can close the order
-- [ ] Users can choose one dish of their choose from the menu
-- [ ] Assess accesibility
+- [x] Users can close the order
+- [x] Users can choose one dish of their choose from the menu
+- [x] Assess accesibility
 
 
 Optional featues:
@@ -151,10 +185,11 @@ Optional featues:
 - [ ] Display username in the top of the page
 - [ ] Back to top button
 - [ ] Push notification to all logged in users when the order is sent to the restaurant
-- [ ] Admin user that can add more entries in the menu
-- [ ] Delegated user that can send the order and make order for other users
+- [x] Admin user that can add more entries in the menu
+- [x] Delegated user that can send the order and make order for other users
 - [x] SMTP function using https://nodemailer.com/
 - [x] Hosting the webserver on Netlify
+- [x] Company entities
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,7 +211,7 @@ Gerardo Cipriano - gerardo.cipriano@studio.unibo.it <br />
 Massimiliano Battelli - massimilian.battelli@studio.unibo.it <br />
 
 
-Project Link: [https://github.com/gerardocipriano/isw](https://github.com/gerardocipriano/isw)
+Project Link: [https://github.com/gerardocipriano/prenotiamo](https://github.com/gerardocipriano/prenotiamo)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -184,5 +219,5 @@ Project Link: [https://github.com/gerardocipriano/isw](https://github.com/gerard
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[license-url]: https://github.com/gerardocipriano/iswblob/master/LICENSE
+[license-url]: https://github.com/gerardocipriano/prenotiamoblob/master/LICENSE
 [product-screenshot]: images/secondLogo.jpg
