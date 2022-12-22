@@ -37,7 +37,7 @@ Dato il monte ore concordato, probabilmente alcuni requisiti non funzionali  ric
 
 Gli elementi costitutivi del problema sono sintetizzati nella seguente figura.
 
-<pre>```mermaid
+```mermaid
 classDiagram
     Prenotiamo <|-- Ristorante
     Prenotiamo <|-- Utente Generico
@@ -58,13 +58,13 @@ classDiagram
         -Effettua invio della lista giornaliera
         -Effettua ordini a nome di altri utenti
     }
-```</pre>
+```
 
 La difficoltà primaria sarà quella di riuscire ad assegnare diversi privilegi (Utente Generico, Utente Ordinante, Ristorante)
 partendo da un set comune di utenti.
 
 Il requisito non funzionale riguardante le notifiche push quando si effettua l'invio dell'ordine alla mensa richiede studi 
-che non potranno essere effettuati all'interno del monte ore previsto: tale feature sarà oggetto
+che non potranno essere effettuati all'interno del monte ore previsto: tale feature probabilmente sarà oggetto
 di futuri lavori.
 
 # Design
@@ -74,12 +74,7 @@ soddisfare i requisiti identificati nell'analisi.
 
 Si parte da una visione architetturale, il cui scopo è informare il
 lettore di quale sia il funzionamento dell'applicativo realizzato ad
-alto livello. In particolare, è necessario descrivere accuratamente in
-che modo i componenti principali del sistema si coordinano fra loro. A
-seguire, si dettagliano alcune parti del design, quelle maggiormente
-rilevanti al fine di chiarificare la logica con cui sono stati
-affrontati i principali aspetti dell'applicazione.
-
+alto livello. 
 
 
 ## Architettura
