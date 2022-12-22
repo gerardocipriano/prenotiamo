@@ -113,7 +113,7 @@ Se non puoi prenotare, chiedi ad un utente delegato del tuo ufficio di fare l'or
 
 <div align="center">
   <a href="https://github.com/gerardocipriano/prenotiamo">
-    <img src="images/menu.png" alt="Menu" height="500">
+    <img src="src/public/img/menu.png" alt="Menu" height="500">
   </a>
 </div>
 
@@ -125,7 +125,7 @@ Se sei un utente autorizzato, ricorda che una volta premuto, non sarà più poss
 
 <div align="center">
   <a href="https://github.com/gerardocipriano/prenotiamo">
-    <img src="images/prenota.png" alt="Prenota" height="500">
+    <img src="src/public/img/prenota.png" alt="Prenota" height="500">
   </a>
 </div>
 
@@ -133,7 +133,7 @@ Dalla pagina storico puoi vedere tutti gli ordini che hai inviato da quando ti s
 
 <div align="center">
   <a href="https://github.com/gerardocipriano/prenotiamo">
-    <img src="images/storico.png" alt="Storico" height="500">
+    <img src="src/public/img/storico.png" alt="Storico" height="500">
   </a>
 </div>
 
@@ -145,7 +145,7 @@ Quest'ultima azione è irreversibile.
 
 <div align="center">
   <a href="https://github.com/gerardocipriano/prenotiamo">
-    <img src="images/delega.png" alt="delega page" height="500">
+    <img src="src/public/img/delega.png" alt="delega page" height="500">
   </a>
 </div>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -159,7 +159,7 @@ La funzionalità Aggiungi immagine è ancora in fase di sviluppo, verrà resa di
 
 <div align="center">
   <a href="https://github.com/gerardocipriano/prenotiamo">
-    <img src="images/inserimento.png" alt="Submit new dish page" height="500">
+    <img src="src/public/img/inserimento.png" alt="Submit new dish page" height="500">
   </a>
 </div>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -220,4 +220,4 @@ Project Link: [https://github.com/gerardocipriano/prenotiamo](https://github.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-url]: https://github.com/gerardocipriano/prenotiamoblob/master/LICENSE
-[product-screenshot]: images/secondLogo.jpg
+[product-screenshot]: src/public/img/secondLogo.jpg
