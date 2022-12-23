@@ -65,7 +65,7 @@ export default defineComponent({
       <div v-for="piatto in portata" class="card mb-3">
         <div class="row">
           <div class="col-lg-4">
-            <img :src="'/img/food/' + piatto.img_id + '.jpg'"  alt="" style="height: ;" class="img-fluid rounded-start img-thumbnail" >
+            <img :src="'/img/food/'+ 'plate' + piatto.img_id + '.jpg'"  alt="" style="height: ;" class="img-fluid rounded-start img-thumbnail" >
           </div>
           <div class="col-lg-8">
               <div class="card-body mt-3">

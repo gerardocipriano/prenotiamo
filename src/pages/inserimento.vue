@@ -19,8 +19,6 @@ export default defineComponent({
     }
   },
   methods: {
-    uploadImg(){
-    },
     getFood() {
         $fetch("/api/inserimento/course").then(response => this.Courses = response as Piatto[])
         $fetch("/api/inserimento/food").then(response => this.Plates = response as Piatto[])
@@ -65,27 +63,23 @@ export default defineComponent({
                             <form @submit.prevent="addFood()" class="mx-1 mx-md-3" >
                                 <h3>Aggiungi al menu</h3>
                                 <div class="row justify-content-center">
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <label class="form-label" for="piatto">
                                             <input type="text" id="piatto" name="piatto" v-model="plateName" class="form-control"  />Nome piatto
                                         </label>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <label class="form-label" for="prezzo">
                                             <input type="text" id="prezzo" name="prezzo" v-model="platePrice" class="form-control"  />Prezzo
                                         </label>
                                     </div>
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-4">
                                         <label class="form-label" for="portata">
                                             <select type="text" id="portata" name="portata" v-model="plateSelect" class="form-select form-outline flex-fill mb-0" required>
                                                 <option selected disabled>Portata</option>
                                                 <option v-for="x in Courses">{{ x.course }}</option>
                                             </select>Seleziona portata
                                         </label>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <input class="form-control" type="file" v-on:change="uploadImg()" id="formFile">
-                                        <label for="formFile" class="form-label">Aggiungi immagine</label>
                                     </div>
                                 </div>
                                 <div class="row">
