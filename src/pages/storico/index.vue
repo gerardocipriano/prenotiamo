@@ -18,7 +18,7 @@ export default defineComponent({
   },
   methods: {
     getHistory() {
-      if(this.user?.role == "Ristorante" ){
+      if(this.user?.role == "Ristorante"){
         $fetch("/api/storico/").then(response => this.Storico = response as History[])
       }
       else {
@@ -27,6 +27,9 @@ export default defineComponent({
     }
   },
   mounted() {
+    this.getHistory()
+  },
+  updated(){
     this.getHistory()
   }
 })
