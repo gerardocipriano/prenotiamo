@@ -3,6 +3,7 @@ export interface Piatto {
     food_id: number
     price: number
     course: string
+    img_id: number
   }
 
   export interface DailyOrder {
