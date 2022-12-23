@@ -1,0 +1,11 @@
+SMTP_SERVER= //stmp url
+SMTP_USERNAME= //stmp username
+MAILTRAP_SECRET= //stmp password
+DB_HOSTNAME= //url of the sql instance
+DB_NAME= //name of the db
+DB_SERVICE_USER= //username < this user has only select permission
+DB_SERVICE_USER_PASSWORD= // password
+DB_SERVICE_ADMIN= // username < this user has DELETE permission on DB
+DB_SERVICE_ADMIN_PASSWORD= // password
+JWT_SECRET= //casual secure string
+COOKIE_NAME=access-token

@@ -16,6 +16,7 @@ L'applicazione verrà resa disponibile anche alla mensa, così da ottimizzare i 
   l'applicazione invia una mail alla mensa, con l'elenco degli ordini.
 - L'utente "ordinante" dovrà essere in grado di effettuare ordine a nome di altri utenti, i quali magari sono impegnati in altre attività.
 - Deve essere fornito un sistema di registrazione e di login ai dipendenti
+
 #### Requisiti non funzionali
 
 -   Gli utenti potranno modificare il proprio ordine.
@@ -86,6 +87,7 @@ La UI verrà disegnata con Balsamiq e sottoposta a feedback del cliente.
 I dati dell'applicazione verranno ospitati su un database MySql in cloud.
 Avendo il database in cloud, il backend non avrà mai problemi nel reperire i dati dal DB.
 Lo schema logico è disponibile nella repository del progetto.
+Tutte le variabili sensibili, come indirizzi, hostname e credenziali, sono salvate in un file .env, non caricato su repository pubbliche, per garantire la confidenzialità dei dati trattati.
 
 
 ## Design dei componenti
@@ -112,8 +114,10 @@ Le credenziali sono conservate nel file .env in allegato all'applicazione.
 
 Contiene il layout dell'applicazione. Background, Header e Navbar sono definiti qui e sono comuni a tutti gli altri 
 compomenti.
-Nella Navbar è stata definita della logica role-based: i componenti "amministrativi" sono visibili a solo chi ha i 
-permessi per usarli.
+Non tutti i pulsanti del navbar sono visibili a tutti gli utenti.
+Ogni tasto è "protetto" da v-if. I v-if verificano la condizione che l'utente attualmente loggato sia autorizzato a navigare quel componente:
+Il tasto "Admin" è visibile solo agli utenti con ruolo di Admin; analogamente "Delega" agli utenti con ruolo "Ordinante" e "Inserimento" agli utenti con ruolo "Ristorante".
+Inoltre la maggior parte dei collegamenti non è visibile se non si è loggati nel sistema: Login, Register, / e Termsofservice sono gli unici componenti consultabili senza essere loggati.
 
 ### Index
 
@@ -131,7 +135,7 @@ il token di autenticazione al browser dell'utente.
 
 ### Register
 
-Discorso simile al compomente di Login. Il form di register è usabile solo se l'utente non è già loggato; il
+Discorso simile al componente di Login. Il form di register è usabile solo se l'utente non è già loggato; il
 check viene effettuato dal middleware requireLogout. 
 Il form raccoglie nome, mail,  password e azienda (selezionabile in un elenco di aziende autorizzate) dell'utente e poi usa un fetch 
 con il metodo POST per inviarli all'API di register.
@@ -139,14 +143,14 @@ L'elenco delle aziende viene fetchato dal DB tramite apposita API che esegue una
 
 ### Menu
 
-Il compomente menù è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
-Il compomente sfrutta una query che interroga il DB, recuperando tramite select tutte le portate registrate nella tabella User.
+Il componente menù è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Il componente sfrutta una query che interroga il DB, recuperando tramite select tutte le portate registrate nella tabella User.
 Le portate vengono stampate in card. Ogni card ha un bottone. Se l'utente ci preme sopra, richiama la funzione sendOrder,
 la quale va a registrare la portata scelta all'interno della tabella degli ordini (daily_order_list).
 
 ### Prenota
 
-Il compomente prenota è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Il componente prenota è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
 Questa pagina contiene una tabella popolata dalle entry della table daily_order_list.
 L' API fa una query richiedendo solo gli ordini del giorno.
 Alla fine della tabella, c'è un bottone che chiama la funzione sendMail().
@@ -155,10 +159,24 @@ L'API è realizzata con nodemail. Compone il testo del messaggio diretto al rist
 La funzione sendMail è utilizzabile solo da utenti con ruolo "Ordinante", viene eseguito un check per verificare il ruolo
 dalla funzione requireOrdinante (contenuta nell'API utils/auth).
 
+#### Invio mail tramite Nodemailer
+
+Il componente Prenota rende disponibile la feature di invio ordine alla mensa. L'invio dell'ordine è effettuato tramite mail.
+Si è scelto di implementare la libreria Nodemailer all'interno del progetto. 
+Per prima cosa si è installato il pacchetto con i types per typescript.
+All'interno di server/utils è presente l'inizializzazione del transport.
+Il transport contiene le informazioni riguardo l'indirizzo dell'smtp server al quale inoltrare la mail, la porta e le credenziali.
+La tabella degli ordini viene passata (POST) all'API server/api/prenota/mail.
+ 1. Qui si verifica che la connessione con i parametri impostati in utils vada a buon fine;
+ 2. Si compone il corpo html della mail, la tabella viene creata dinamicamente, sulla base del corpo ricevuto via POST;
+ 3. Composti tutti i campi della mail, questa viene inviata usando il transport.
+Ho utilizzato il servizio di Fake Inbox offerto da mailtrap.io per eseguire tutti i test in fase di sviluppo. 
+
+
 ### Delega
 
-Il compomente delega è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
-Sul compomente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "Ordinante" possono vedere il tasto nella navbar o
+Il componente delega è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Sul componente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "Ordinante" possono vedere il tasto nella navbar o
 navigare il componente (il double check viene effettuato dal middleware require-ordinante).
 La pagina offre due form
  1. Il primo consente l'aggiunta manuale di un ordine a nome di un altro utente già registrato nel sistema.
@@ -171,8 +189,8 @@ La pagina offre due form
 
 ### Admin
 
-Il compomente Admin è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
-Sul compomente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "Admin" possono vedere il tasto nella navbar o
+Non richiesto dal cliente ma implementato comunque per garantire una gestibilità maggiore dell'applicazione. Il componente Admin è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Sul componente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "Admin" possono vedere il tasto nella navbar o
 navigare il componente (il double check viene effettuato dal middleware require-admin).
 La pagina offre la possibilità ad un amministratore di sistema, di configurare agevolmente i ruoli degli utenti registrati.
 Un API apposita recupera la lista degli utenti, che vengono mostrati in una select.
@@ -183,8 +201,8 @@ L'API effettua una query di UPDATE.
 ### Inserimento
 
 
-Il compomente Inserimento è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
-Sul compomente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "ristorante" possono vedere il tasto nella navbar o
+Il componente Inserimento è visibile e accessibile solo dopo il login, il check viene effettuato dal middleware require-login.
+Sul componente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "ristorante" possono vedere il tasto nella navbar o
 navigare il componente (il double check viene effettuato dal middleware require-ristorante).
 Viene offerta un interfaccia per eliminare o aggiungere nuove portate sulla tabella menu.
 

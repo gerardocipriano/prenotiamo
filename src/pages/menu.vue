@@ -3,6 +3,10 @@ import { Piatto } from "../types"
 import {ref} from 'vue';
 const dish = ref('');
 
+definePageMeta({
+  middleware: ["require-login"]
+})
+
 
 export default defineComponent({
   data() {
