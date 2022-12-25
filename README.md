@@ -26,7 +26,7 @@
     <a href="https://github.com/gerardocipriano/prenotiamo"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://prenotiamo.netlify.app/">View Demo</a>
+    <a href="https://prenotiamo.tk/">View Demo</a>
     ·
     <a href="https://github.com/gerardocipriano/prenotiamo/issues">Report Bug</a>
     ·
