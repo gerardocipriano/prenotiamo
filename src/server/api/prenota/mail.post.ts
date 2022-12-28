@@ -30,7 +30,7 @@ export default defineEventHandler(async function(event) {
             <th style="padding-top: 12px;padding-bottom: 12px;text-align: left;background-color: #1082F3;color: white;  border-collapse: collapse;width: 25%; font-family: Arial, Helvetica, sans-serif" id="note">Note</th>
         </tr>
       </thead>`
-    let order_tdst: DailyOrder[] = await readBody(event)
+    const order_tdst: DailyOrder[] = await readBody(event)
 
     order_tdst.forEach( (x) => {
       html += `<tr style="tr:hover"><td style="padding: 8px;font-family: Arial, Helvetica, sans-serif">`+x.name+`</td>`
@@ -41,7 +41,7 @@ export default defineEventHandler(async function(event) {
 
   html+=`</html>`
 
-    let mailOptions = {
+    const mailOptions = {
     
         to: 'user1@example.com',
         subject: 'Ordine del giorno',

@@ -25,7 +25,7 @@ export interface Piatto {
 
   export interface Company {
     company_id: number
-    name: String
+    name: string
   }
 
 export interface User {
