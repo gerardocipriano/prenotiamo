@@ -12,7 +12,11 @@ const day = date.getDate().toString().padStart(2, "0") + "/" +(date.getMonth() +
 
 export default defineComponent({
   
-  
+  setup() {
+    return {
+      user: inject("user") as User | null
+    }
+  },
   data() {
     return {
       DailyOrder: [] as DailyOrder[],
@@ -60,7 +64,7 @@ export default defineComponent({
       </tbody> 
     </table>
   </section>
-  <button type="button"  @click="sendMail()"  class="btn btn-dark btn-rounded">Prenota</button>
+  <button v-if="user?.role=='Ordinante'" type="button"  @click="sendMail()"  class="btn btn-dark btn-rounded">Prenota</button>
 </div>
 </template>
 
