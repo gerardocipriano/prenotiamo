@@ -102,7 +102,7 @@ export default defineComponent({
     border-style: solid;
 }
 .container-fluid {
-    background-image: url('/img/background-image-3.jpg');
+    background-image: linear-gradient(rgba(237, 245, 245, 0.034), rgba(103, 192, 243, 0.082)),url('/img/background-image-3.jpg');
     background-size: 60%;
 }
 .page-enter-active,
