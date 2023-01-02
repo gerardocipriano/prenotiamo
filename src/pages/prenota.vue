@@ -33,6 +33,16 @@ export default defineComponent({
         body: this.DailyOrder
       });
     },
+    deletePlate(){
+      $fetch("/api/prenota/delete", {
+        method: "POST",
+        body: {
+          plateDelete: this.user?.id,
+        }
+      })
+      .then(() => window.location.href = "/prenota")
+      .catch((e) => alert(e))
+    }
   },
   mounted() {
     this.getDailyOrders()
@@ -45,7 +55,7 @@ export default defineComponent({
 <div class="container text-center">
   <h1>Ordini del {{ day }}</h1>
   <section class="mt-1">
-    <table id="table" class="table table-striped table-hover">
+    <table id="table" class="table table-striped">
       <thead>
         <tr>
             <th id="name">Nome</th>
@@ -60,6 +70,7 @@ export default defineComponent({
           <td>{{ orders.company }}</td>
           <td>{{ orders.food_name }}</td>
           <td>{{ orders.note }}</td>
+          <button v-if="user?.id==orders.id" type="button" @click="deletePlate()" class="btn btn-rounded btn-outline-danger fw-semibold">Elimina</button>
         </tr>
       </tbody> 
     </table>

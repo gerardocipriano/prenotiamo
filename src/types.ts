@@ -12,6 +12,7 @@ export interface Piatto {
     food_name: string
     date: number
     note: string
+    id: number
   }
 
   export interface History {
