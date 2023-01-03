@@ -158,6 +158,7 @@ La funzione sendMail() invia all'API /prenota/mail tramite post l'elenco degli o
 L'API è realizzata con nodemail. Compone il testo del messaggio diretto al ristorante utilizzando il body della richiesta.
 La funzione sendMail è utilizzabile solo da utenti con ruolo "Ordinante", viene eseguito un check per verificare il ruolo
 dalla funzione requireOrdinante (contenuta nell'API utils/auth).
+Gli utenti possono eliminare i propri piatti aggiunti a prenota prima che vengano inviati.
 
 #### Invio mail tramite Nodemailer
 
@@ -205,6 +206,11 @@ Il componente Inserimento è visibile e accessibile solo dopo il login, il check
 Sul componente viene effettuato un ulteriore controllo: solo gli utenti con il ruolo "ristorante" possono vedere il tasto nella navbar o
 navigare il componente (il double check viene effettuato dal middleware require-ristorante).
 Viene offerta un interfaccia per eliminare o aggiungere nuove portate sulla tabella menu.
+
+### Storico
+
+Ogni utente può visualizzare il proprio storico delle prenotazioni fatte nei giorni precedenti. In aggiunta l'utente Ristorante può visualizzare
+tutte le prenotazioni fatte, e per ogni utente le proprie prenotazioni.
 
 # Sviluppo
 
