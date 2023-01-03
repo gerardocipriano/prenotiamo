@@ -206,6 +206,11 @@ Sul componente viene effettuato un ulteriore controllo: solo gli utenti con il r
 navigare il componente (il double check viene effettuato dal middleware require-ristorante).
 Viene offerta un interfaccia per eliminare o aggiungere nuove portate sulla tabella menu.
 
+### Storico
+
+Ogni utente può visualizzare il proprio storico delle prenotazioni fatte nei giorni precedenti. In aggiunta l'untente Ristorante può visualizzare
+tutte le prenotazioni fatte, e per ogni utente le proprie prenotazioni.
+
 # Sviluppo
 
 ## Testing automatizzato
