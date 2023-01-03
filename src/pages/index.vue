@@ -6,7 +6,6 @@
           <div class="row g-0">
             <h1>Benvenuto su Prenotiamo!</h1>
             <h2>Portale aziendale per la prenotazione del pranzo.</h2>
-            <p>Se hai inserito un ordine per errore o vuoi cambiarlo, contatta il responsabile della prenotazione pasti</p>
             <p>Ti ricordiamo che come da convenzione con la mensa, si ha diritto ad una sola portata.</p>
             <p>Se hai dimenticato la password del tuo utente, contatta l'Help Desk.</p>
 

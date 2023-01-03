@@ -62,20 +62,20 @@ classDiagram
 ```
 
 La difficoltà primaria sarà quella di riuscire ad assegnare diversi privilegi (Utente Generico, Utente Ordinante, Ristorante)
-partendo da un set comune di utenti.
+partendo da un set comune di utenti e a differenziare la navigazione del sito in base al loro ruolo.
 
 Il requisito non funzionale riguardante le notifiche push quando si effettua l'invio dell'ordine alla mensa richiede studi 
-che non potranno essere effettuati all'interno del monte ore previsto: tale feature probabilmente sarà oggetto
+che non potranno essere effettuati all'interno del monte ore previsto: tale feature sarà oggetto
 di futuri lavori.
 
 # Design
 
-In questo capitolo si spiegano le strategie messe in campo per
+(In questo capitolo si spiegano le strategie messe in campo per
 soddisfare i requisiti identificati nell'analisi.
 
 Si parte da una visione architetturale, il cui scopo è informare il
 lettore di quale sia il funzionamento dell'applicativo realizzato ad
-alto livello. 
+alto livello.)
 
 
 ## Architettura

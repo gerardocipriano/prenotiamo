@@ -118,9 +118,7 @@ Se non puoi prenotare, chiedi ad un utente delegato del tuo ufficio di fare l'or
 </div>
 
 Dalla pagina prenota è possibile visualizzare l'elenco di tutti gli ordini pervenuti nella mattinata.
-Se hai inviato l'ordine per errore, chiedi ad un utente delegato del tuo ufficio di rimuoverlo.
-ATTENZIONE! Il tasto prenota è riservato agli utenti autorizzati. Serve ad inviare l'elenco alla mensa. 
-Se sei un utente autorizzato, ricorda che una volta premuto, non sarà più possibile modificare dall'App gli ordini.
+Se hai scelto un piatto per errore, in corrispondenza del tuo ordine troverai un tasto che ti permettera di eliminarlo. Torna poi in menù per reinserire quello corretto.
 
 
 <div align="center">
@@ -139,6 +137,7 @@ Dalla pagina storico puoi vedere tutti gli ordini che hai inviato da quando ti s
 
 ### Utenti Ordinanti
 
+Da utente Ordinante, ti è possibile visualizzare il tasto per inviare la lista degli ordini presenti nella pagina "Prenota".
 Se sei autorizzato ad inviare ordini, oltre ai tasti citati qui sopra, puoi vedere nella barra di navigazione anche il tasto delega.
 L'interfaccia ti offre la possibilità, nella prima parte, di inserire un ordine a nome di un altro collega; nella seconda parte puoi eliminare l'ordine di un collega selezionando il suo nome e poi cliccando sul tasto.
 Quest'ultima azione è irreversibile.
@@ -177,6 +176,7 @@ Mandatory features:
 - [x] Users can close the order
 - [x] Users can choose one dish of their choose from the menu
 - [x] Assess accesibility
+- [x] User Role Management
 
 
 Optional featues:
