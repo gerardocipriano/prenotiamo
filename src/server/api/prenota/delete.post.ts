@@ -1,4 +1,4 @@
-import { createPrivilegedConnection } from "~/server/utils/db"
+import { getPrivilegedConnection } from "~/server/utils/db"
 import { decodingUser, requireLogin, } from "../../utils/auth"
 
 export default defineEventHandler(async function(event) {
@@ -7,7 +7,7 @@ export default defineEventHandler(async function(event) {
     requireLogin(user)
 
     const { plateDelete } = await readBody(event)
-    const connection = await createPrivilegedConnection()
+    const connection = await getPrivilegedConnection()
 
      await connection.execute(
         `DELETE FROM daily_order_list

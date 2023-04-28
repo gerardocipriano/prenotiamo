@@ -1,4 +1,4 @@
-import { createPrivilegedConnection } from "~/server/utils/db"
+import { getPrivilegedConnection } from "~/server/utils/db"
 import { decodingUser, requireAdmin, requireLogin, requireRistorante } from "../../utils/auth"
 
 export default defineEventHandler(async function(event) {
@@ -8,12 +8,13 @@ export default defineEventHandler(async function(event) {
     requireRistorante(user)
 
     const { plateDelete } = await readBody(event)
-    const connection = await createPrivilegedConnection()
+    const connection = await getPrivilegedConnection()
 
      await connection.execute(
         `DELETE FROM menu 
         WHERE food_name = ?`,
        [plateDelete]
     )
+    connection.release()
     return { message: "Plate Deleted Successfully" }
 })

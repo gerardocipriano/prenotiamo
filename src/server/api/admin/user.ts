@@ -1,4 +1,4 @@
-import { createConnection } from "~/server/utils/db"
+import { getConnection } from "~/server/utils/db"
 import { decodingUser, requireAdmin, requireLogin, requireOrdinante } from "../../utils/auth"
 
 export default defineEventHandler(async function(event) {
@@ -6,11 +6,12 @@ export default defineEventHandler(async function(event) {
   requireLogin(user)
   requireAdmin(user)
 
-  const connection = await createConnection()
+  const connection = await getConnection()
   const [results] = await connection.execute(
     `SELECT name, id
     FROM prenotiamo.user
     `
   )
+  connection.release()
   return results
 })

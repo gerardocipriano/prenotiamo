@@ -1,7 +1,7 @@
-import { createConnection } from "~/server/utils/db"
+import { getConnection } from "~/server/utils/db"
 
 export default defineEventHandler(async function(event) {
-  const connection = await createConnection()
+  const connection = await getConnection()
   const [results] = await connection.execute(
     `SELECT  food_name, note, DAY(date) as day, MONTH(date) as month, YEAR(date) as year
      FROM daily_order_list

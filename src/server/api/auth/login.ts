@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt"
 
 import { codingUser, decodingUser, requireLogout } from "~/server/utils/auth"
-import { createConnection } from "~/server/utils/db"
+import { getConnection } from "~/server/utils/db"
 
 export default defineEventHandler(async function(event) {
   // Blocca la richiesta se l'utente ha già effettuato il login
@@ -11,7 +11,7 @@ export default defineEventHandler(async function(event) {
   // Estrae username e password dal body della richiesta
   const { email, password } = await readBody(event)
   // Esegue la query al database per ottenere i dati dell'utente in base allo username
-  const connection = await createConnection()
+  const connection = await getConnection()
   const [results] = await connection.execute(
     `SELECT *
     FROM user 
@@ -39,7 +39,7 @@ export default defineEventHandler(async function(event) {
 
   // Crea un JWT contenente i dati dell'utente e lo imposta come cookie
   codingUser(event, user)
-
+  connection.release()
   return { message: "Logged in Successfully" }
 })
 

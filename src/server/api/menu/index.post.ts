@@ -1,4 +1,4 @@
-import { createPrivilegedConnection } from "~/server/utils/db"
+import { getPrivilegedConnection } from "~/server/utils/db"
 import { decodingUser, requireLogin } from "../../utils/auth"
 
 export default defineEventHandler(async function(event) {
@@ -8,11 +8,12 @@ export default defineEventHandler(async function(event) {
     const date = new Date()
     const dataordine = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0")
     const { dish,  note } = await readBody(event)
-    const connection = await createPrivilegedConnection()
+    const connection = await getPrivilegedConnection()
      await connection.execute(
         `INSERT INTO daily_order_list (food_name, note, date, user_id)
         VALUES (?, ?, ?, ?)`,
        [dish, note, dataordine, user?.id]
     )
+    connection.release()
     return { message: "Order placed with success." }
 })

@@ -1,7 +1,7 @@
 
 import bcrypt from "bcrypt"
 import { codingUser, decodingUser, requireLogout } from "~/server/utils/auth"
-import { createPrivilegedConnection } from "~/server/utils/db"
+import { getPrivilegedConnection } from "~/server/utils/db"
 
 export default defineEventHandler(async function(event) {
   // Blocca la richiesta se l'utente ha già effettuato il login
@@ -12,7 +12,7 @@ export default defineEventHandler(async function(event) {
   const { name, password, email, company } = await readBody(event)
 
   // Verifica che l'indirizzo email sia disponibile
-  const connection = await createPrivilegedConnection()
+  const connection = await getPrivilegedConnection()
   const [users] = await connection.execute(
     "SELECT email FROM user WHERE email=?",
     [email]
@@ -41,7 +41,7 @@ export default defineEventHandler(async function(event) {
 
   // Crea un JWT contenente i dati dell'utente e lo imposta come cookie
   codingUser(event, user)
-
+  connection.release()
   return { message: "Signed Up Successfully" }
 })
 
