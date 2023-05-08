@@ -1,0 +1,25 @@
+# Ignora la cartella node_modules
+
+node_modules
+
+# Ignora i file di log
+
+\*.log
+
+# Ignora i file di configurazione dell'editor
+
+.editorconfig
+.eslintrc.js
+.prettierrc
+.vscode
+sql
+
+# Ignora i file di configurazione del sistema di controllo versione
+
+.git
+.gitignore
+
+# Ignora i file di configurazione del sistema operativo
+
+.DS_Store
+Thumbs.db
