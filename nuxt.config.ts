@@ -2,6 +2,9 @@ import { Head } from './.nuxt/components.d';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default ({
     srcDir: "src",
+    nitro: {
+        compressPublicAssets: true,
+      },
     css:[
         "bootstrap/dist/css/bootstrap.css"
     ],
