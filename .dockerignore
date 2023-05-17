@@ -13,6 +13,7 @@ node_modules
 .prettierrc
 .vscode
 sql
+\*.yaml
 
 # Ignora i file di configurazione del sistema di controllo versione
 
