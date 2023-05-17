@@ -10,5 +10,5 @@ steps:
         "--image",
         "gcr.io/$PROJECT_ID/prenotiamo-image",
         "--region",
-        "eu-west4",
+        "europe-west4",
       ]
