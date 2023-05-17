@@ -6,7 +6,7 @@ steps:
       [
         "run",
         "deploy",
-        "prenotiamo",
+        "service-europe-west12",
         "--image",
         "gcr.io/$PROJECT_ID/prenotiamo-image",
         "--region",
