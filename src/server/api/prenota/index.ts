@@ -9,5 +9,6 @@ export default defineEventHandler(async function() {
     ORDER BY company
     `
   )
+  connection.release()
   return results
 })

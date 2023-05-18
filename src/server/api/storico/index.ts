@@ -7,6 +7,7 @@ export default defineEventHandler(async function() {
     FROM daily_order_list
     `
   )
+  connection.release()
   return results
 })
 
