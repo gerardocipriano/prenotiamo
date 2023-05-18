@@ -14,6 +14,7 @@ export default defineEventHandler(async function(event) {
         WHERE (date=CURDATE()) AND (user_id=?)`,
        [plateDelete]
     )
+    connection.release()
     return { message: "Plate Deleted Successfully" }
 })
 

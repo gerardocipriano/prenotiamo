@@ -8,6 +8,7 @@ export default defineEventHandler(async function(event) {
      WHERE daily_order_list.user_id=?`,
     [event.context.params.id]
   )
+  connection.release()
   return results
 })
 
